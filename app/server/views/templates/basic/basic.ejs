@@ -9,7 +9,21 @@
         <% include ../../builders/styles %>
     </head>
     <body>
-        <section id='blocks-wrapper'>
+        <div id='nav-wrapper' class='container-fluid'>
+            <nav id='links' class='navbar navbar-fixed-top navbar-absolute'>
+                <a class='brand' href='#'><%= site.name %></a>
+                <ul class='nav pull-right'>
+                    <% for (var i = 0; i < site.blocks.length; i++) { -%>
+                        <li>
+                            <a href='#block<%= i %>'>
+                                <%= site.blocks[i].linkName %>
+                            </a>
+                        </li>
+                    <% } %>
+                </ul>
+            </nav>
+        </div>
+        <section id='blocks-wrapper container-fluid'>
             <% include ../../builders/blocks %>
         </section>
             <% var incScripts = ['/vendor/jquery.min.js',

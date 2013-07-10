@@ -3,8 +3,18 @@ body {
     padding: 0;
     height: 100%;
     background: #222222;
-    font-size: 18em;
+    font-size: 14pt;
     color: #ffffff;
+}
+
+#nav-wrapper {
+    width:100%;
+    min-height:70px;
+}
+
+#links {
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 #blocks-wrapper {
@@ -13,6 +23,11 @@ body {
     height:auto;
     margin: 0px auto;
     border: 1px solid white;
+}
+
+.block {
+    margin-top: 200px;
+    margin-bottom: 200px;
 }
 
 #login-container {
