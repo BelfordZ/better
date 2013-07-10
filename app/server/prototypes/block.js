@@ -1,3 +1,4 @@
-modules.exports = {
-  data: {}
-}
+module.exports.blockObj = {
+    blockID: '',
+    content: {}
+};

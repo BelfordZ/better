@@ -38,7 +38,7 @@ exports.getUserObject = function(username, callback) {
 }
 
 //Gets the site object associated with a user site
-exports.getSiteObject = function(site, callback) {
+exports.getUserObjectFromSiteName = function(site, callback) {
   console.log("tried " + site);
   accounts.findOne({siteName:site}, function(e, o) {
 	  if(o) {

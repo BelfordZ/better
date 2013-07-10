@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= site.name %></title>
+        <% incStyles = ['/vendor/bootstrap.min.css',
+                        '/css/templates/basic.css',
+                        'http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css'
+                       ] %>
+        <% include ../../builders/styles %>
+    </head>
+    <body>
+        <% include ../../builders/blocks %>
+        <% var incScripts = ['/vendor/jquery.min.js',
+                             '/vendor/jquery.form.js',
+                             '/vendor/bootstrap-modal.js',
+                             '/js/views/login.js', 
+                             '/js/controllers/login-controller.js', 
+                             '/js/form-validators/loginValidator.js',
+                             '/js/form-validators/emailValidator.js'] %>
+        <% include ../../builders/scripts %>
+    </body>
+</html>

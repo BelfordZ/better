@@ -1,0 +1,7 @@
+<% for (var i = 0; i < site.blocks.length; i++) { -%>
+    <% if (site.blocks[i].type == 'text') { -%>
+        <div class='block container-fluid span4'>
+            <% include ../blocks/text -%>
+        </div>
+    <% } %>
+<% } -%>

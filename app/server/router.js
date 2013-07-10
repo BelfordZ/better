@@ -1,7 +1,7 @@
 var CT = require('./modules/country-list');
 var AM = require('./modules/account-manager');
 var EM = require('./modules/email-dispatcher');
-
+//access restriction
 function restrict(req, res, next) {
   if(req.session.user) {
     next();
@@ -9,7 +9,7 @@ function restrict(req, res, next) {
     res.redirect("/");
   }
 }
-
+//access restriction
 function restrictAdmin(req, res, next) {
   if(req.session.user && req.session.user.admin) {
     next();
@@ -100,13 +100,6 @@ module.exports = function(app) {
       res.redirect('/print');	
     });
   });
-  //var routes = require('./routes');
-  /*
-  app.get('/:action', routes.getUserSite); { 
-    require('./modules/system/sites').getUserSite(req, res);
-    //res.render('404', { title: 'Page Not Found'}); 
-  });
-  */
 
   app.get('/:action', function(req, res) {
     if (req.url != '/favicon.ico') {
