@@ -8,7 +8,7 @@ module.exports.accountObj = {
   siteName: '',
   site: {
     name: '',
-    templateID: 'basic',
+    template: 'basic',
     blocks: {}
   }
 }

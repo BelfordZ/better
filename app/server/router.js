@@ -109,9 +109,11 @@ module.exports = function(app) {
   */
 
   app.get('/:action', function(req, res) {
-    if (req.url != '/favicon.ico')
+    if (req.url != '/favicon.ico') {
       require('./modules/system/sites').getUserSite(req, res);
-    //res.render('404', { title: 'Page Not Found'}); 
+    } else {
+      res.render('404', { title: 'Page Not Found'});
+    }
   });
 
 };
