@@ -1,6 +1,7 @@
 <% for (var i = 0; i < site.blocks.length; i++) { -%>
-    <% if (site.blocks[i].type == 'text') { -%>
-        <div class='block container-fluid span4'>
+    <% var currBlock = site.blocks[i] -%>
+    <% if (currBlock.type == 'text') { -%>
+        <div class='block'>
             <% include ../blocks/text -%>
         </div>
     <% } %>

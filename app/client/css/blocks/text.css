@@ -1,4 +1,5 @@
 .block-text {
-    width: auto;
-    text-align:center;
+    width: 70%;
+    margin: 10px auto;
+    font-size:10em;
 }

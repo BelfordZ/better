@@ -9,14 +9,16 @@
         <% include ../../builders/styles %>
     </head>
     <body>
-        <% include ../../builders/blocks %>
-        <% var incScripts = ['/vendor/jquery.min.js',
-                             '/vendor/jquery.form.js',
-                             '/vendor/bootstrap-modal.js',
-                             '/js/views/login.js', 
-                             '/js/controllers/login-controller.js', 
-                             '/js/form-validators/loginValidator.js',
-                             '/js/form-validators/emailValidator.js'] %>
-        <% include ../../builders/scripts %>
+        <section id='blocks-wrapper'>
+            <% include ../../builders/blocks %>
+        </section>
+            <% var incScripts = ['/vendor/jquery.min.js',
+                                 '/vendor/jquery.form.js',
+                                 '/vendor/bootstrap-modal.js',
+                                 '/js/views/login.js', 
+                                 '/js/controllers/login-controller.js', 
+                                 '/js/form-validators/loginValidator.js',
+                                 '/js/form-validators/emailValidator.js'] %>
+            <% include ../../builders/scripts %>
     </body>
 </html>
