@@ -10,7 +10,7 @@ module.exports.getLogin = function(req, res) {
             if(o != null) {
                 console.log("could not auto-login");
                 req.session.user = o;
-                res.redirect('/home');
+                res.redirect('/edit');
             } else {
                 res.render('login', { title: 'Hello - Please Login To Your Account' });
             }

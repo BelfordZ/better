@@ -1,0 +1,17 @@
+<%
+    var ejsGlobals = {};
+    ejsGlobals.incStyles = ['/blocks/text/edit/css/text.css'];
+    ejsGlobals.incScripts = ['/blocks/text/vendor/tinymce/js/tinymce/tinymce.min.js'
+                            ];
+
+-%>
+<% include ../builders/styles %>
+<div class='block-text'>
+    <script type="text/javascript">
+        tinymce.init({
+            selector: "textarea"
+        });
+    </script>
+    <div><%= currBlock.content.body %></div>
+</div>
+

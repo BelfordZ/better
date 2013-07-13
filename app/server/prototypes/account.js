@@ -6,6 +6,8 @@ module.exports.accountObj = {
     pass: '',
     country: '',
     siteName: '',
+    expires: '',
+    appsRegistered: ['text'],
     site: {
         name: '',
         template: 'basic',

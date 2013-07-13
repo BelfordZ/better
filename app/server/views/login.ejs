@@ -1,89 +1,47 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title><%= title %></title>
-        <% incStyles = ['/vendor/bootstrap.min.css',
-                        '/css/style.css',
-                        'http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css'
-                       ] %>
-        <% include styles %>
-    </head>
-    <body>
-        <div id='login-container'>
-            <form id='login-form' class='well span4' method='post'>
-                <h1> NewlyWebs Registration </h1>
-                <p class='subheading'>Please sign into your account</p>
-                
-                <label>Username</label>
-                <input type='text' name='user' id='user-tf' class='span4 required'/>
-                
-                <label>Password</label>
-                <input type='password' name='pass' id='pass-tf' class='span4 required'/>
-                
-                <button type='submit' id='btn-login' class='btn btn-primary'>
-                    <i class='icon-lock icon-white'></i>Sign In
-                </button>
-                
-                <label id='remember-me' class='checkbox'>
-                    Remember Me
-                    <input type='checkbox' checked='checked'/>
-                </label>
-                
-                <div class='clear-fix'></div>
-                <hr>
-                <div class='btm-links'>
-                    <a href='#' id='forgot-password'>Forgot Your Password?</a>
-                    <a href='/register' id='create-account'>Create An Account</a>
-                </div>
-            </form>
-        </div>
-        
-        <div class="modal-alert modal hide fade">
-            <div class="modal-header">
-                <button data-dismiss="modal" class="close">x</button>
-                <h3></h3>
-            </div>
+<% 
+    var ejsGlobals = {};
+    ejsGlobals.incStyles = ['/vendor/bootstrap.min.css',
+                            '/templates/home/css/login.css',
+                            'http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css'
+                           ];
+    ejsGlobals.incScripts = ['/vendor/jquery.min.js',
+                             '/vendor/jquery.form.js',
+                             '/vendor/bootstrap-modal.js',
+                             '/vendor/bootstrap-transitions.js',
+                             '/templates/home/js/login.js',
+                             '/js/controllers/login-controller.js', 
+                             '/js/form-validators/loginValidator.js',
+                             '/js/form-validators/emailValidator.js'];
+-%>
+<% include header %>
+    <div id='login-container'>
+        <form id='login-form' class='well span4' method='post'>
+            <h1> NewlyWebs Registration </h1>
+            <p class='subheading'>Please sign into your account</p>
             
-            <div class="modal-body">
-                <p></p>
-            </div>
+            <label>Username</label>
+            <input type='text' name='user' id='user-tf' class='span4 required'/>
             
-            <div class="modal-footer">
-                <button data-dismiss="modal" id="ok" class="btn btn-warning">OK</button>
-            </div>
-        </div>
-        
-        <div id="get-credentials" class="modal-single-input modal hide fade">
-            <div class="modal-header">
-                <button data-dismiss="modal" class="close">x</button>
-                <h3>Retrieve Password</h3>
-            </div>
+            <label>Password</label>
+            <input type='password' name='pass' id='pass-tf' class='span4 required'/>
             
-            <div class="modal-body">
-                <form method="post" id="get-credentials-form" class="well span5">
-                    <p>Please enter the email address associated with your account</p>
-                    
-                    <input type="text" name="email" id="email-tf" class="span5 required">
-                    
-                    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
-                    <button data-dismiss="modal" id="cancel" class="btn">Cancel</button>
-                    
-                    <div class="alert alert-error hide"></div>
-                    
-                    <button data-dismiss="alert" class="close"></button>
-                </form>
-            </div>
+            <button type='submit' id='btn-login' class='btn btn-primary'>
+                <i class='icon-lock icon-white'></i>Sign In
+            </button>
             
-            <div class="modal-footer"></div>
-        </div>
-        <% var incScripts = [
-                           '/vendor/jquery.min.js',
-                           '/vendor/jquery.form.js',
-                           '/vendor/bootstrap-modal.js',
-                           '/js/views/login.js', 
-                           '/js/controllers/login-controller.js', 
-                           '/js/form-validators/loginValidator.js',
-                           '/js/form-validators/emailValidator.js'] %>
-        <% include scripts %>
-    </body>
-</html>
+            <label id='remember-me' class='checkbox'>
+                Remember Me
+                <input type='checkbox' checked='checked'/>
+            </label>
+            
+            <div class='clear-fix'></div>
+            <hr>
+            <div class='btm-links'>
+                <a href='#' id='forgot-password'>Forgot Your Password?</a>
+                <a href='/register' id='create-account'>Create An Account</a>
+            </div>
+        </form>
+    </div>
+    <% include modals/alert %>
+    <% include modals/lost-password %>
+<% include footer %>

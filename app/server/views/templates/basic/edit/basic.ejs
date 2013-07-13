@@ -1,0 +1,29 @@
+<% 
+    var ejsGlobals = {};
+    ejsGlobals.incStyles = ['/vendor/bootstrap.min.css',
+                            '/templates/basic/no-edit/css/basic.css', 
+                            'http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css'
+                           ]; 
+-%>
+<% include header %>      
+    <div id='nav-wrapper' class='container-fluid'>
+        <nav id='links' class='navbar navbar-fixed-top navbar-absolute'>
+            <a class='brand' href='#'><%= userData.site.name %></a>
+            <ul class='nav pull-right'>
+                <% for (var i = 0; i < userData.site.blocks.length; i++) { -%>
+                    <li>
+                        <a href='#block<%= i %>'><%= userData.site.blocks[i].linkName %></a>
+                    </li>
+                <% } %>
+            </ul>
+        </nav>
+    </div>
+    <section id='blocks-wrapper container-fluid'>
+        <% include ../../builders/blocks %>
+    </section>
+<%
+    ejsGlobals.incScripts = ['/vendor/jquery.min.js',
+                             '/vendor/jquery.form.js',
+                            ];
+-%>
+<% include footer %>

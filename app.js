@@ -16,8 +16,14 @@ app.configure(function(){
     app.use(express.cookieParser());
     app.use(express.session({ secret: 'wVrw>&WRjbPH|Z9CZtL?m;]*jL>>7-c.Y.xcshMitYZ};g%keX%4rQ2f-z:7a9+6' }));
     app.use(express.methodOverride());
+    app.use(express.logger('dev'));
+    app.use(express.favicon());
     app.use(require('stylus').middleware({ src: __dirname + '/app/public' }));
     app.use(express.static(__dirname + '/app/client'));
+    // development only
+    if ('development' == app.get('env'))
+        app.use(express.errorHandler());
+
 });
 
 require('./app/server/router')(app);

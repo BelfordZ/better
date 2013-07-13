@@ -1,7 +1,7 @@
 var CT = require('./modules/country-list');
 var AM = require('./modules/account-manager');
 var EM = require('./modules/email-dispatcher');
-//access restriction
+
 function restrict(req, res, next) {
     if(req.session.user) {
         next();
@@ -9,7 +9,6 @@ function restrict(req, res, next) {
         res.redirect("/");
     }
 }
-//access restriction
 function restrictAdmin(req, res, next) {
     if(req.session.user && req.session.user.admin) {
         next();
@@ -19,20 +18,51 @@ function restrictAdmin(req, res, next) {
 }
 
 module.exports = function(app) {
-    // debugging sessions //
-    app.get('/sessions', restrictAdmin, function(req, res) {
-        require('./modules/admin/debug').sessions(req, res);
+    
+    /********************************/
+    /*  Non-access-restricted URLs  */
+    /********************************/
+    app.get('/*', function(req, res) {
+        if (req.url == '/') {
+            console.log(JSON.stringify(req.session));
+            require('./modules/system/login').getLogin(req, res);
+        } else if (req.url == '/register') {
+            require('./modules/system/register').getRegister(req, res);
+        } else if (req.url != '/edit'){
+            require('./modules/system/sites').getUserSite(req, res, function() {
+            });
+        }
+    });
+    app.post('/*', function(req, res) {
+        if (req.url == '/') {
+            require('./modules/system/login').postLogin(req, res);
+        } else if (req.url == '/register') {
+            require('./modules/system/register').postRegister(req, res);
+        }   
+    });
+    /*************************************/
+    /* End of Non-access-restricted URLs */
+    /*************************************/
+    
+    
+    /*************************************/
+    /*       Access Restricted URLs      */
+    /*************************************/
+    app.get('/edit', restrict, function(req, res) {
+        require('./modules/user/edit').getEdit(req, res);
+    });
+    app.post('/edit', restrict, function(req, res) {
+        require('./modules/user/edit').postEdit(req, res);
     });
     
-    // main login page //
-    app.get('/', function(req, res){
-        require('./modules/user/login').getLogin(req, res);
-    });
-    app.post('/', function(req, res){
-        require('./modules/user/login').postLogin(req, res);
-    });
+    /*************************************/
+    /*  End of Access Restricted URLs    */
+    /*************************************/
     
-    // logged-in user homepage //
+    
+    
+    
+    /*
     app.get('/home', restrict, function(req, res) {
         require('./modules/user/home').getHome(req, res);
     });
@@ -108,4 +138,5 @@ module.exports = function(app) {
             res.render('404', { title: 'Page Not Found'});
         }
     });
+    */
 };
