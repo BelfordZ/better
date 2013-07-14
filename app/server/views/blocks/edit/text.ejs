@@ -1,17 +1,12 @@
-<%
-    var ejsGlobals = {};
-    ejsGlobals.incStyles = ['/blocks/text/edit/css/text.css'];
-    ejsGlobals.incScripts = ['/blocks/text/vendor/tinymce/js/tinymce/tinymce.min.js'
-                            ];
+<link rel='stylesheet' href="/blocks/text/no-edit/css/text.css" />
 
--%>
-<% include ../builders/styles %>
 <div class='block-text'>
-    <script type="text/javascript">
-        tinymce.init({
-            selector: "textarea"
-        });
-    </script>
-    <div><%= currBlock.content.body %></div>
+     <textarea class='<%= currBlock.linkName %></textare>' onchange='postChanges(this)'><%= currBlock.content.body %></textarea>
 </div>
-
+<script>
+    initEditor()
+    tinymce.init({
+        inline: true,
+        selector: "textarea.block-content"
+    });
+</script>

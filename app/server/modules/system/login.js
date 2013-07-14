@@ -8,10 +8,10 @@ module.exports.getLogin = function(req, res) {
         // attempt automatic login //
         AM.autoLogin(req.cookies.user, req.cookies.pass, function(o) {
             if(o != null) {
-                console.log("could not auto-login");
                 req.session.user = o;
                 res.redirect('/edit');
             } else {
+                console.log("could not auto-login");
                 res.render('login', { title: 'Hello - Please Login To Your Account' });
             }
         });
@@ -21,7 +21,7 @@ module.exports.getLogin = function(req, res) {
 module.exports.postLogin = function (req, res) {
     AM.manualLogin(req.param('user'), req.param('pass'), function(e, o) {
         if (!o) {
-            console.log("could not auto-login" + e + o);
+            console.log("could not manual-login" + e + o);
             res.send(e, 400);
         } else {
             req.session.user = o;

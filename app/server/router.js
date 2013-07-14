@@ -24,11 +24,14 @@ module.exports = function(app) {
     /********************************/
     app.get('/*', function(req, res) {
         if (req.url == '/') {
-            console.log(JSON.stringify(req.session));
             require('./modules/system/login').getLogin(req, res);
         } else if (req.url == '/register') {
             require('./modules/system/register').getRegister(req, res);
-        } else if (req.url != '/edit'){
+        } else if (req.url == '/edit') {
+            restrict(req, res, function() {
+                require('./modules/user/edit').getEdit(req, res);
+            });
+        } else {
             require('./modules/system/sites').getUserSite(req, res, function() {
             });
         }
@@ -48,12 +51,12 @@ module.exports = function(app) {
     /*************************************/
     /*       Access Restricted URLs      */
     /*************************************/
-    app.get('/edit', restrict, function(req, res) {
-        require('./modules/user/edit').getEdit(req, res);
-    });
-    app.post('/edit', restrict, function(req, res) {
-        require('./modules/user/edit').postEdit(req, res);
-    });
+    //app.get('/edit', restrict, function(req, res) {
+    //    require('./modules/user/edit').getEdit(req, res);
+    //});
+    //app.post('/edit', restrict, function(req, res) {
+    //    require('./modules/user/edit').postEdit(req, res);
+    //});
     
     /*************************************/
     /*  End of Access Restricted URLs    */
