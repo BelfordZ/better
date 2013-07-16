@@ -119,6 +119,18 @@ exports.updateAccount = function(newData, callback) {
     });
 }
 
+exports.updateTextBlock = function(userID, newSite, callback) {
+    accounts.update({user: userName}, 
+                    {$set: {site: newSite}}
+                   );
+    accounts.findOne({user:userName}, function(e, o){
+        console.log("AM: queried: " + JSON.stringify(o));
+        console.log("And wrote: " + JSON.stringify(req.session.user));
+        o = req.session.user;
+        accounts.save(o, {safe: true}, callback);
+    });
+}
+
 exports.updatePassword = function(email, newPass, callback) {
     accounts.findOne({email:email}, function(e, o) {
         if (e) {

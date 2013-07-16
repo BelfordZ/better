@@ -1,0 +1,14 @@
+<!-- first part shows apps registered -->
+<% for (var i = 0; i < userData.apps.length; i++) { -%>
+    <% var currAppBlock = req -%>
+    <% if (currBlock.type == 'text') { -%>
+        <div class='block-text' id='block<%= i %>'>
+            <% include ../blocks/text -%>
+        </div>
+    <% } -%>
+    <% if (currBlock.type == 'gallery') { -%>
+        <div class='block-text' id='block<%= i %>'>
+            <% include ../blocks/gallery -%>
+        </div>
+    <% } -%>
+<% } -%>

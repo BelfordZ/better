@@ -17,6 +17,7 @@ function restrictAdmin(req, res, next) {
     }
 }
 
+
 module.exports = function(app) {
     
     /********************************/
@@ -31,6 +32,10 @@ module.exports = function(app) {
             restrict(req, res, function() {
                 require('./modules/user/edit').getEdit(req, res);
             });
+        } else if(req.url == '/apps/') {
+            restrict(req, res, function() {
+                require('./app/apps').getApps(req, res);
+            });
         } else {
             require('./modules/system/sites').getUserSite(req, res, function() {
             });
@@ -41,7 +46,9 @@ module.exports = function(app) {
             require('./modules/system/login').postLogin(req, res);
         } else if (req.url == '/register') {
             require('./modules/system/register').postRegister(req, res);
-        }   
+        } else if (req.url == '/edit') {
+            require('./modules/user/edit').postEdit(req, res);
+        }
     });
     /*************************************/
     /* End of Non-access-restricted URLs */

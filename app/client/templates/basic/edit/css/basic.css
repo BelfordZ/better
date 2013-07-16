@@ -29,3 +29,10 @@ body {
     margin-top: 200px;
     margin-bottom: 200px;
 }
+
+.userNav {
+    font-size:12pt;
+    color:#3fa2a;
+    margin: 0;
+    background-color:rgba(255,255,255,0.3);    
+}

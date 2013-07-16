@@ -1,5 +1,6 @@
 <!-- Edit -->
 <link rel='stylesheet' href="/blocks/text/edit/css/text.css" />
-
-<textarea class='textBlock_<%= i %>'><%= currBlock.content.body %></textarea>
-<a class='btn btn-success' onclick='postTextBlock(this)'>Save Changes</a>
+<form>
+    <input id='<%= i %>' type='text' value='<%= currBlock.content.body %>' />
+    <a class='btn btn-success' onclick='postTextBlock("<%= i %>")'>Save Changes</a>
+</form>
