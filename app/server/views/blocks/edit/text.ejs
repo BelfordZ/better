@@ -1,12 +1,5 @@
-<link rel='stylesheet' href="/blocks/text/no-edit/css/text.css" />
+<!-- Edit -->
+<link rel='stylesheet' href="/blocks/text/edit/css/text.css" />
 
-<div class='block-text'>
-     <textarea class='<%= currBlock.linkName %></textare>' onchange='postChanges(this)'><%= currBlock.content.body %></textarea>
-</div>
-<script>
-    initEditor()
-    tinymce.init({
-        inline: true,
-        selector: "textarea.block-content"
-    });
-</script>
+<textarea class='textBlock_<%= i %>'><%= currBlock.content.body %></textarea>
+<a class='btn btn-success' onclick='postTextBlock(this)'>Save Changes</a>

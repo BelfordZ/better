@@ -1,12 +1,12 @@
 <% for (var i = 0; i < site.blocks.length; i++) { -%>
     <% var currBlock = site.blocks[i] -%>
     <% if (currBlock.type == 'text') { -%>
-        <div class='block' id='block<%= i %>'>
+        <div class='block-text' id='block<%= i %>'>
             <% include ../blocks/text -%>
         </div>
     <% } -%>
     <% if (currBlock.type == 'gallery') { -%>
-        <div class='block' id='block<%= i %>'>
+        <div class='block-text' id='block<%= i %>'>
             <% include ../blocks/gallery -%>
         </div>
     <% } -%>

@@ -1,3 +1,9 @@
-    <% include ../../../builders/scripts %>
+    <% include ../../../builders/scripts -%>
+    <script>
+        initEditor(); // horrible hack. this should not be here, and should be instead
+                      // in the blocks/edit/text/block.ejs. The issue is adding the 
+                      // tinymce script before making this call. There arises the issue
+                      // of calling this multiple times..
+    </script>
     </body>
 </html>
