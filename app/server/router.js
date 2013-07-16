@@ -19,10 +19,6 @@ function restrictAdmin(req, res, next) {
 
 
 module.exports = function(app) {
-    
-    /********************************/
-    /*  Non-access-restricted URLs  */
-    /********************************/
     app.get('/*', function(req, res) {
         if (req.url == '/') {
             require('./modules/system/login').getLogin(req, res);
@@ -34,7 +30,7 @@ module.exports = function(app) {
             });
         } else if(req.url == '/apps/') {
             restrict(req, res, function() {
-                require('./app/apps').getApps(req, res);
+                require('./apps/apps').getApps(req, res);
             });
         } else {
             require('./modules/system/sites').getUserSite(req, res, function() {
@@ -50,14 +46,7 @@ module.exports = function(app) {
             require('./modules/user/edit').postEdit(req, res);
         }
     });
-    /*************************************/
-    /* End of Non-access-restricted URLs */
-    /*************************************/
-    
-    
-    /*************************************/
-    /*       Access Restricted URLs      */
-    /*************************************/
+
     //app.get('/edit', restrict, function(req, res) {
     //    require('./modules/user/edit').getEdit(req, res);
     //});

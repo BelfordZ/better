@@ -26,8 +26,8 @@
             <% if (userData.apps[0].type == 'guest-list') { %>
                 <% for (var k=0; k < userData.apps[0].guests.length; k++) { %>
                     <div class="guest-wrapper">
-                        <h1><%= userData.apps[0].guests[0].name %></h1>
-                        <%= userData.apps[0].guests[0].email %>
+                        <h1><%= userData.apps[0].guests[k].name %></h1>
+                        <%= userData.apps[0].guests[k].email %>
                     </div>
                 <% } %>
             <% } %>

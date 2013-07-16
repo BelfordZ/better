@@ -1,4 +1,3 @@
-//GET RID OF THIS FILE! PUT IT IN THE RIGHT TEMPLATE (home)
 $(document).ready(function(){
     
     var lv = new LoginValidator();
