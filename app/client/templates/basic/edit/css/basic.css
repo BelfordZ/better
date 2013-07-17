@@ -2,9 +2,21 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
+    
     background: #222222;
+    background: -moz-radial-gradient(center, ellipse cover, #222222 0%, #333333 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #222222), color-stop(100%, #333333));
+    /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover, #222222 0%, #333333 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover, #222222 0%, #333333 100%);
+    /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover, #222222 0%, #333333 100%);
+    /* IE10+ */
+    background: radial-gradient(center, ellipse cover, #222222 0%, #333333 100%);
+    
     font-size: 14pt;
-    color: #ffffff;
 }
 
 #nav-wrapper {
@@ -26,13 +38,34 @@ body {
 }
 
 .block {
-    margin-top: 200px;
-    margin-bottom: 200px;
+    margin-top: 100px;
+    margin-bottom: 100px;
 }
-
+a {
+    color:#aaa;
+}
 .userNav {
     font-size:12pt;
-    color:#3fa2a;
-    margin: 0;
-    background-color:rgba(255,255,255,0.3);    
+    position:relative;
+    float:left;
+    margin: 10px 5px 10px 5px;
+}
+
+#my-apps-wrapper {
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 2% 2% 2% 2%;
+    background-color:rgba(100,100,100,1);
+}
+
+.guest-list {
+    padding: 1% 1% 1% 1%;
+    margin: 2% 2% 2% 2%;
+    background-color:rgba(34,34,34,0.6);
+    background-image:url('/apps/guest-list/img/icon.jpg');
+    background-repeat:no-repeat;
+    background-position:center;
+    width: 180px;
+    height: 180px;
+    float:left;
 }

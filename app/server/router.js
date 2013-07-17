@@ -28,9 +28,13 @@ module.exports = function(app) {
             restrict(req, res, function() {
                 require('./modules/user/edit').getEdit(req, res);
             });
-        } else if(req.url == '/apps/') {
+        } else if(req.url == '/my-apps') {
             restrict(req, res, function() {
-                require('./apps/apps').getApps(req, res);
+                require('./apps/my-apps').getApps(req, res);
+            });
+        } else if (req.url == '/my-apps/:action') {
+            restrict(req, res, function() {
+                require('./apps/' + req.param.action).getApps(req, res);
             });
         } else {
             require('./modules/system/sites').getUserSite(req, res, function() {

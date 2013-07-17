@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/vendor/bootstrap.min.css">
+        <link rel="stylesheet" href="/templates/basic/edit/css/basic.css">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+        <script type="text/javascript" src="/vendor/jquery.min.js"></script>
+        <script type="text/javascript" src="/vendor/jquery.form.js"></script>
+        <script type="text/javascript" src="/apps/apps.js"></script>
+    </head>
+    <body>
+        <div id='nav-wrapper' class='container-fluid'>
+            <nav id='links' class='navbar navbar-fixed-top navbar-absolute'>
+                <a class='brand' href='#'><%= userData.user %></a>
+                <a class="userNav" href='apps'>My Apps</a>
+                <a class="userNav" href='Account'>My Account</a>
+                <ul class='nav pull-right'>
+                    <% for (var i = 0; i < userData.site.blocks.length; i++) { -%>
+                        <li>
+                            <a href='#block<%= i %>'><%= userData.site.blocks[i].linkName %></a>
+                        </li>
+                    <% } -%>
+                </ul>
+            </nav>
+        </div>
+        <!-- Should display app icons for each registered app -->
+        <div id='my-apps-wrapper' class='container-fluid'>
+            <% for (var m=0; m<userData.apps.length; m++) { %>
+                <% if (userData.apps[m].type == 'guest-list') { %>
+                    <a href="myapps/guest-list" class="guest-list"></a>
+                <% } %>
+            <% } %>
+        </div>           
+                    
+    </body>
+</html>
