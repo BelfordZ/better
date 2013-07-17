@@ -131,6 +131,15 @@ exports.updateTextBlock = function(userID, newSite, callback) {
     });
 }
 
+exports.updateGalleryBlock = function(usr, callback) {
+    accounts.findOne({user:usr.user}, function(e, o){
+        console.log("AM: queried: " + JSON.stringify(o));
+        console.log("And wrote: " + JSON.stringify(usr));
+        o = usr;
+        accounts.save(o, {safe: true}, callback);
+    });
+}
+
 exports.updatePassword = function(email, newPass, callback) {
     accounts.findOne({email:email}, function(e, o) {
         if (e) {

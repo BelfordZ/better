@@ -11,7 +11,8 @@
         <div id='nav-wrapper' class='container-fluid'>
             <nav id='links' class='navbar navbar-fixed-top navbar-absolute'>
                 <a class='brand' href='#'><%= userData.user %></a>
-                <a class="userNav" href='apps'>My Apps</a>
+                <a class="userNav" href='my-apps'>My Apps</a>
+                <a class="userNav" href='apps-store'>Apps Store</a>
                 <a class="userNav" href='Account'>My Account</a>
                 <ul class='nav pull-right'>
                     <% for (var i = 0; i < userData.site.blocks.length; i++) { -%>
@@ -26,7 +27,7 @@
         <div id='my-apps-wrapper' class='container-fluid'>
             <% for (var m=0; m<userData.apps.length; m++) { %>
                 <% if (userData.apps[m].type == 'guest-list') { %>
-                    <a href="myapps/guest-list" class="guest-list"></a>
+                    <a href="my-apps/guest-list" class="guest-list"></a>
                 <% } %>
             <% } %>
         </div>           

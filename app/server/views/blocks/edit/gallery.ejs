@@ -1,1 +1,10 @@
 <!-- Edit -->
+<link rel='stylesheet' href='/blocks/gallery/edit/css/gallery.css' />
+<% for (var t=0; t<currBlock.imgs.length; t++) { %>
+    <img src='userContent/img/<%= currBlock.imgs[t].filename %>'>
+<% } %>
+<form action='edit' enctype='multipart/form-data' method='post'>
+    <input id='<%= i %>' type='file' name='inputImg'>
+    <input type='hidden' name='blockIndex' value='<%= i %>'>
+    <input type='submit' class='btn btn-success' value='Save Changes'>
+</form>

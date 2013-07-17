@@ -1,8 +1,8 @@
-var postTextBlock = function(blockID) {
+var postGalleryBlock = function(blockID) {
     var postData = {};
-    postData.blockIndex = blockID;
-    postData.content = $('#' + blockID).attr("value");
-    postData.linkType = 'text';
+    postData.linkIndex = blockID;
+    postData.content = $('#' + blockID).attr("files");
+    postData.linkType = 'gallery';
     console.log(postData);
     
     $.post("edit", postData)

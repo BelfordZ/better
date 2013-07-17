@@ -32,9 +32,9 @@ module.exports = function(app) {
             restrict(req, res, function() {
                 require('./apps/my-apps').getApps(req, res);
             });
-        } else if (req.url == '/my-apps/:action') {
+        } else if (req.url == '/my-apps/guest-list') {
             restrict(req, res, function() {
-                require('./apps/' + req.param.action).getApps(req, res);
+                require('./apps/guest-list/guest-list').getGuestList(req, res);
             });
         } else {
             require('./modules/system/sites').getUserSite(req, res, function() {
