@@ -1,6 +1,13 @@
+var initEditor = function() {
+     tinymce.init({
+         mode: "textareas"
+     });
+};
+
 var postTextBlock = function(blockID) {
     var postData = {};
     postData.blockIndex = blockID;
+    tinyMCE.triggerSave();
     postData.content = $('#' + blockID).attr("value");
     postData.linkType = 'text';
     console.log(postData);
@@ -11,7 +18,13 @@ var postTextBlock = function(blockID) {
         })
         .done(function(res) {
             if (res == 'ok') {
-                $('#' + 'block' + blockID).append('<div class="well postResults">Update Successful!</div>');
+                $('#ajaxResult').html('<div class="well postResults">Update Successful!</div>');
+                setTimeout(function() {
+                    $('#ajaxResult').fadeOut(1200, function() {
+                        $('#ajaxResult').html('');
+                        $('#ajaxResult').show();
+                    });
+                }, 1000);
             }
     });
 };

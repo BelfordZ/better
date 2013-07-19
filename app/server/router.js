@@ -19,7 +19,9 @@ module.exports = function(app) {
         } else if (req.url == '/my-apps/guest-list') {
             restrict(req, res, function() {
                 require('./apps/guest-list/guest-list').getGuestList(req, res);
-            });
+            });  
+        } else if(req.url == '/logout') {
+            require('./modules/user/logout').getLogout(req, res);
         } else {
             console.log('Unhandled Request to: ' + req.url);
             console.log('------> Checking if user site exists');
@@ -56,7 +58,7 @@ module.exports = function(app) {
             res.redirect("/");
         }
     }
-    
+};
     
     //app.get('/edit', restrict, function(req, res) {
     //    require('./modules/user/edit').getEdit(req, res);
@@ -149,4 +151,3 @@ module.exports = function(app) {
         }
     });
     */
-};

@@ -2,20 +2,17 @@
 <% 
     var ejsGlobals = {};
     ejsGlobals.incStyles = ['/vendor/bootstrap.min.css',
-                            '/templates/basic/edit/css/basic.css', 
+                            '/templates/ultra/no-edit/css/ultra.css', 
                             'http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css',
-                            '/blocks/text/edit/css/text.css',
-                            '/blocks/gallery/edit/css/gallery.css'
+                            '/blocks/text/no-edit/css/text.css',
+                            '/blocks/gallery/no-edit/css/gallery.css'
                            ];
 -%>
 <% include header %>
     <div id='nav-wrapper' class='container-fluid'>
         <nav id='links' class='navbar navbar-fixed-top navbar-absolute'>
             <a class='brand' href='#'><%= userData.user %></a>
-            <a class="userNav" href='my-apps'>My Apps</a>
-            <a class="userNav" href='apps-store'>Apps Store</a>
-            <a class="userNav" href='account'>My Account</a>
-            <ul class='nav pull-right'>
+            <ul class='nav'>
                 <% for (var i = 0; i < userData.site.blocks.length; i++) { -%>
                     <li>
                         <a href='#block<%= i %>'><%= userData.site.blocks[i].linkName %></a>
@@ -25,14 +22,12 @@
         </nav>
     </div>
     <div id='ajaxResult'></div>
-    <section id='blocks-wrapper container-fluid'>
-        <% include ../../../builders/edit-blocks %>
+    <section id='blocks-wrapper' class='container-fluid'>
+        <% include ../../../builders/blocks %>
     </section>
 <%
     ejsGlobals.incScripts = ['/vendor/jquery.min.js',
-                             '/vendor/jquery.form.js',
-                             '//tinymce.cachefly.net/4.0/tinymce.min.js',
-                             '/blocks/text/edit/js/text.js'
+                             '/vendor/jquery.form.js'
                             ];
 -%>
 <% include footer %>

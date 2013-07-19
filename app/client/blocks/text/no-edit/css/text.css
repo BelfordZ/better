@@ -1,5 +1,7 @@
 .block-text {
     width: 70%;
-    margin: 10px auto;
+    margin: 10px auto 10px auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
     font-size:14pt;
 }

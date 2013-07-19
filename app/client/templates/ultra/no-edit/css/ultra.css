@@ -9,20 +9,21 @@ body {
     padding: 0;
     height: 100%;
     
-    background: #222222;
-    background: -moz-radial-gradient(center, ellipse cover, #222222 0%, #333333 100%);
+    background: #51357a;
+    background: -moz-radial-gradient(center, ellipse cover, #51357a 0%, #333333 100%);
     /* FF3.6+ */
-    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #222222), color-stop(100%, #333333));
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #51357a), color-stop(100%, #333333));
     /* Chrome,Safari4+ */
-    background: -webkit-radial-gradient(center, ellipse cover, #222222 0%, #333333 100%);
+    background: -webkit-radial-gradient(center, ellipse cover, #51357a 0%, #333333 100%);
     /* Chrome10+,Safari5.1+ */
-    background: -o-radial-gradient(center, ellipse cover, #222222 0%, #333333 100%);
+    background: -o-radial-gradient(center, ellipse cover, #51357a 0%, #333333 100%);
     /* Opera 12+ */
-    background: -ms-radial-gradient(center, ellipse cover, #222222 0%, #333333 100%);
+    background: -ms-radial-gradient(center, ellipse cover, #51357a 0%, #333333 100%);
     /* IE10+ */
-    background: radial-gradient(center, ellipse cover, #222222 0%, #333333 100%);
+    background: radial-gradient(center, ellipse cover, #51357a 0%, #333333 100%);
     
     font-size: 14pt;
+    color:orange;
 }
 
 #nav-wrapper {
@@ -47,7 +48,7 @@ body {
 }
 
 a {
-    color:#aaa;
+    color:#0bf7f3;
 }
 .userNav {
     font-size:12pt;
@@ -60,13 +61,11 @@ a {
     margin-left: 10%;
     margin-right: 10%;
     padding: 2% 2% 2% 2%;
-    background-color:rgba(100,100,100,1);
 }
 
 .guest-list {
     padding: 1% 1% 1% 1%;
     margin: 2% 2% 2% 2%;
-    background-color:rgba(34,34,34,0.6);
     background-image:url('/apps/guest-list/img/icon.jpg');
     background-repeat:no-repeat;
     background-position:center;
