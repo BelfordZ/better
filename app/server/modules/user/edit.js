@@ -11,49 +11,42 @@ module.exports.getEdit = function(req, res) {
     });
 }
 module.exports.postEdit = function(req, res) {
+    // if the update was to a text block
     if (req.param("content")) {
-        req.session.user.site.blocks[req.param("linkIndex")].content.body = req.param('content');
-        AM.updateTextBlock(req.session.user.user, req.param("linkIndex"), req.param('content'), 
-                           function(e, o) {
-                               if(e) {
-                                   res.send('error-updating-account', 400);
-                                   console.log("big bad error");
-                               } else {
-                                   // update the user's login cookies if they exists //
-                                   if (req.cookies.user != undefined && req.cookies.pass != undefined) {
-                                       res.cookie('user', o.user, { maxAge: 365 * 24 * 60 * 60 * 1000 });
-                                       res.cookie('pass', o.pass, { maxAge: 365 * 24 * 60 * 60 * 1000 });	
-                                   }
-                                   console.log("NOT big bad error: " + JSON.stringify(o));
-                                   res.send('ok', 200);
-                               }
-                           });
-    } else if (req.files) {
-        fs.readFile(req.files.inputImg.path, function (err, data) {
-            console.log(__dirname);
-            var newPath = '/userContent/img/' + req.files.inputImg.name;
-            fs.writeFile(newPath, data, function (err) {
-                res.send(err, 400);
-            });
-        });
-        req.session.user.site.blocks[req.param("blockIndex")].imgs.push(
-            {
-                "filename": '../../client/userContent/img/' + req.files.inputImg.name
-            }
-        );
-        AM.updateGalleryBlock(req.session.user, function(e, o) {
+        req.session.user.site.blocks[req.param("blockIndex")].content.body = req.param('content');
+        AM.updateTextBlock(req, function(e, o) {
             if(e) {
                 res.send('error-updating-account', 400);
-                console.log("big bad error");
             } else {
-                // update the user's login cookies if they exists //
-                if (req.cookies.user != undefined && req.cookies.pass != undefined) {
-                    res.cookie('user', o.user, { maxAge: 365 * 24 * 60 * 60 * 1000 });
-                    res.cookie('pass', o.pass, { maxAge: 365 * 24 * 60 * 60 * 1000 });	
-                }
-                console.log("NOT big bad error: " + JSON.stringify(o));
                 res.send('ok', 200);
             }
         });
+    } else if (req.files) {
+        // Get the uploaded byte data from /tmp/ folder on server
+        //      (unix server only, make sure file permissions are set to be able to read /tmp/)
+        fs.readFile(req.files.inputImg.path, function (err, data) {
+            // Check error in uploading to server root!
+            if (err) {
+                res.send(err + " ===> postEdit: file upload: error while reading input image", 400);
+            } else {
+                var userContentPath = 'app/client/userContent/img'
+                var newPath = userContentPath + '/' + req.files.inputImg.name;
+                fs.writeFile(newPath, data, function (err) { 
+                    if (err) {
+                        throw err;
+                    }
+                    var newBlockObj = { "filename": 'userContent/img/' + req.files.inputImg.name };
+                    req.session.user.site.blocks[req.param("blockIndex")].imgs.push(newBlockObj);
+                    AM.updateGalleryBlock(req, function(e, o) {
+                        if(e) {
+                            console.log("big bad error");
+                            res.send('error-updating-account', 400);
+                        } else {
+                            res.redirect('/');
+                        }
+                    });
+                });
+            }
+        });
     }
-        }
+        };

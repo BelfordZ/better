@@ -2,22 +2,6 @@ var CT = require('./modules/country-list');
 var AM = require('./modules/account-manager');
 var EM = require('./modules/email-dispatcher');
 
-function restrict(req, res, next) {
-    if(req.session.user) {
-        next();
-    } else {
-        res.redirect("/");
-    }
-}
-function restrictAdmin(req, res, next) {
-    if(req.session.user && req.session.user.admin) {
-        next();
-    } else {
-        res.redirect("/");
-    }
-}
-
-
 module.exports = function(app) {
     app.get('/*', function(req, res) {
         if (req.url == '/') {
@@ -37,20 +21,43 @@ module.exports = function(app) {
                 require('./apps/guest-list/guest-list').getGuestList(req, res);
             });
         } else {
+            console.log('Unhandled Request to: ' + req.url);
+            console.log('------> Checking if user site exists');
             require('./modules/system/sites').getUserSite(req, res, function() {
             });
         }
     });
     app.post('/*', function(req, res) {
+        // On post to home page, Try to log in the user
         if (req.url == '/') {
             require('./modules/system/login').postLogin(req, res);
-        } else if (req.url == '/register') {
+        }
+        // On post to register, validate/verify input data and create a new account, redirect to /edit
+        else if (req.url == '/register') {
             require('./modules/system/register').postRegister(req, res);
-        } else if (req.url == '/edit') {
+        } 
+        // On post to register, could have -> changed blocks, added/removed blocks, etc etc
+        else if (req.url == '/edit') {
             require('./modules/user/edit').postEdit(req, res);
         }
-    });
-
+            });
+    // Access restriction functions. If logged in, will run the 'next' function passed in
+    function restrict(req, res, next) {
+        if(req.session.user) {
+            next();
+        } else {
+            res.redirect("/");
+        }
+    }
+    function restrictAdmin(req, res, next) {
+        if(req.session.user && req.session.user.admin) {
+            next();
+        } else {
+            res.redirect("/");
+        }
+    }
+    
+    
     //app.get('/edit', restrict, function(req, res) {
     //    require('./modules/user/edit').getEdit(req, res);
     //});

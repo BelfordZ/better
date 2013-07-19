@@ -13,10 +13,15 @@ app.configure(function(){
     app.set('view engine', 'ejs');
     app.locals.pretty = true;
     app.use(express.bodyParser());
+    app.use(express.bodyParser({uploadDir:'/app/client/userContent/img'}));
     app.use(express.cookieParser());
     app.use(express.session({ secret: 'wVrw>&WRjbPH|Z9CZtL?m;]*jL>>7-c.Y.xcshMitYZ};g%keX%4rQ2f-z:7a9+6' }));
     app.use(express.methodOverride());
     app.use(express.logger('dev'));
+    app.use(express.errorHandler({
+        dumpException: true,
+        showStack: true
+    }));
     app.use(express.favicon());
     app.use(require('stylus').middleware({ src: __dirname + '/app/public' }));
     app.use(express.static(__dirname + '/app/client'));

@@ -119,23 +119,26 @@ exports.updateAccount = function(newData, callback) {
     });
 }
 
-exports.updateTextBlock = function(userID, newSite, callback) {
-    accounts.update({user: userName}, 
-                    {$set: {site: newSite}}
-                   );
-    accounts.findOne({user:userName}, function(e, o){
-        console.log("AM: queried: " + JSON.stringify(o));
-        console.log("And wrote: " + JSON.stringify(req.session.user));
-        o = req.session.user;
+exports.updateTextBlock = function(request, callback) {
+    var userName = request.session.user.user;
+    var blockIndex = request.param('blockIndex');
+    var blockContent = request.param('content');
+    request.session.user.site.blocks[blockIndex].content.body = blockContent;
+    accounts.findOne({user: request.session.user.user}, function(e, o){
+        if (e) {
+            console.log("updateTextBlock --> Error, Could not find user: " + request.session.user.user);
+        }
+        o = request.session.user;
         accounts.save(o, {safe: true}, callback);
     });
 }
 
-exports.updateGalleryBlock = function(usr, callback) {
-    accounts.findOne({user:usr.user}, function(e, o){
-        console.log("AM: queried: " + JSON.stringify(o));
-        console.log("And wrote: " + JSON.stringify(usr));
-        o = usr;
+exports.updateGalleryBlock = function(request, callback) {
+    accounts.findOne({user: request.session.user.user}, function(e, o){
+        if (e) {
+            console.log("updateGalleryBlock --> Error, Could not find user: " + request.session.user.user);
+        }
+        o = request.session.user;
         accounts.save(o, {safe: true}, callback);
     });
 }

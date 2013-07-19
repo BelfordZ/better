@@ -10,6 +10,8 @@ var postTextBlock = function(blockID) {
             console.log("request sent");
         })
         .done(function(res) {
-            console.log("res");
+            if (res == 'ok') {
+                $('#' + 'block' + blockID).append('<div class="well postResults">Update Successful!</div>');
+            }
     });
 };
