@@ -2,12 +2,12 @@
     <% var currBlock = userData.site.blocks[i] -%>
     <% if (currBlock.type == 'text') { -%>
         <div class='block-text' id='block<%= i %>'>
-            <% include ../blocks/edit/text -%>
+            <% include ../blocks/text/edit/text -%>
         </div>
     <% } -%>
     <% if (currBlock.type == 'gallery') { -%>
         <div class='block-gallery' id='block<%= i %>'>
-            <% include ../blocks/edit/gallery -%>
+            <% include ../blocks/gallery/edit/gallery -%>
         </div>
     <% } -%>
 <% } -%>

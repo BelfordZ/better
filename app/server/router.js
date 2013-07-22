@@ -23,7 +23,7 @@ module.exports = function(app) {
         } else if(req.url == '/logout') {
             restrict(req, res, function() {
                 require('./modules/system/logout').getLogout(req, res);
-            }
+            });
         } else {
             console.log('Unhandled Request to: ' + req.url);
             console.log('------> Checking if user site exists');
