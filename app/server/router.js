@@ -21,7 +21,9 @@ module.exports = function(app) {
                 require('./apps/guest-list/guest-list').getGuestList(req, res);
             });  
         } else if(req.url == '/logout') {
-            require('./modules/user/logout').getLogout(req, res);
+            restrict(req, res, function() {
+                require('./modules/system/logout').getLogout(req, res);
+            }
         } else {
             console.log('Unhandled Request to: ' + req.url);
             console.log('------> Checking if user site exists');

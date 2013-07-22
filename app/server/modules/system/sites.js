@@ -7,7 +7,7 @@ module.exports.getUserSite = function(req, res, next) {
         if (o != null) {
             //res.send(o, 200);
             console.log('Site Found! Redirecting...');
-            res.render('templates/' + o.site.template + '/' + o.site.template, {site: o.site});
+            res.render('templates/' + o.site.template + '/no-edit/' + o.site.template, {site: o.site});
         } else {
             console.log('+-----> not a user site, pass!' )
             next();
