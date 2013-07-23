@@ -3,13 +3,13 @@
         <% var currBlock = userData.site.blocks[i] -%>
         <% if (currBlock.type == 'text') { -%>
             <li class='block-text ui-state-default' id='block<%= i %>'>
-                <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+                <arrows class="ui-icon ui-icon-arrowthick-2-n-s"></arrows>
                 <% include ../blocks/text/edit/text -%>
             </li>
         <% } -%>
         <% if (currBlock.type == 'gallery') { -%>
             <li class='block-gallery ui-state-default' id='block<%= i %>'>
-                <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+                <arrows class="ui-icon ui-icon-arrowthick-2-n-s"></arrows>
                 <% include ../blocks/gallery/edit/gallery -%>
             </li>
         <% } -%>

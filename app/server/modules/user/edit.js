@@ -20,6 +20,7 @@ module.exports.postEdit = function(req, res) {
                 res.send('ok', 200);
             }
         });
+    // if the update was adding images
     } else if (req.files) {
         // Get the uploaded byte data from /tmp/ folder on server
         //      (unix server only, make sure file permissions are set to be able to read /tmp/)
@@ -47,6 +48,7 @@ module.exports.postEdit = function(req, res) {
                 });
             }
         });
+    // if the update was re-ordering the blocks
     } else if (req.param('startIndex') && req.param('finishIndex')) {        
         if (req.param('startIndex') == req.param('finishIndex')) {
             res.send('ok', 200);
@@ -66,12 +68,15 @@ module.exports.postEdit = function(req, res) {
                 blocks.splice(0, 0, blockToMove);                                
             } else if (posToMoveTo < posToMoveFrom) {
                 console.log("to is less than from");
-                blocks.splice(posToMoveTo+1, 0, blockToMove);
-                blocks.splice(posToMoveFrom+1, 1);                
-            }  else if (posToMoveFrom == 0) {                    
+                blocks.splice(posToMoveFrom, 1); 
+                blocks.splice(posToMoveTo, 0, blockToMove);
+                //blocks.splice(posToMoveFrom+1, 1);                
+            }  else if (posToMoveFrom == 0) {
+                console.log("from pos 0");
                 blocks.splice(posToMoveFrom, 1);
                 blocks.splice(posToMoveTo, 0, blockToMove);                
             } else {
+                console.log("other");
                 blocks.splice(posToMoveTo+1, 0, blockToMove);
                 blocks.splice(posToMoveFrom, 1);                
             }

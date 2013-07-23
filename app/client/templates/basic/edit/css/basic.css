@@ -1,10 +1,16 @@
-#preview {
-    position:absolute;
-    top: 10%;
-    left: 10%;
-    width: 80%;
-    height: 80%;
-    margin: 0px auto 0px auto;
+#sortable {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+#sortable li {
+    padding: 0.4em;
+    padding-left: 1.5em;
+    font-size: 1.4em;
+}
+#sortable li arrows {
+    position: absolute;
+    margin-left: -1.3em;
 }
 
 .modal-body {
@@ -50,11 +56,10 @@ body {
 }
 
 #blocks-wrapper {
-    width: 80%;
-    min-width: 100px;
-    height:auto;
-    margin: 0px auto;
-    border: 1px solid white;
+    width: 90%;
+    min-width: 300px;
+    margin: 0px auto 0px auto;
+    padding: 0;
 }
 
 .block {
