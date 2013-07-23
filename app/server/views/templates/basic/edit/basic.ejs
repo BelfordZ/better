@@ -14,7 +14,7 @@
             <a class='brand' href='#'><%= userData.user %></a>
             <a class="userNav" href='my-apps'>My Apps</a>
             <a class="userNav" href='apps-store'>Apps Store</a>
-            <a class="userNav" href='account'>My Account</a>
+            <a class="userNav" href='my-account'>My Account</a>
             <a class="userNav" href='logout'>Logout</a>
             <ul class='nav pull-right'>
                 <% for (var i = 0; i < userData.site.blocks.length; i++) { -%>
@@ -29,10 +29,8 @@
     <section id='blocks-wrapper container-fluid'>
         <% include ../../../builders/edit-blocks %>
     </section>
-
 <%
-    ejsGlobals.incScripts = ['/vendor/jquery.min.js',
-                             '/vendor/jquery.form.js',
+    ejsGlobals.incScripts = ['/vendor/jquery.form.js',
                              '//tinymce.cachefly.net/4.0/tinymce.min.js',
                              '/blocks/text/edit/js/text.js',
                              '/vendor/bootstrap-modal.js',

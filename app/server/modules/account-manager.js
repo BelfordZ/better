@@ -119,6 +119,20 @@ exports.updateAccount = function(newData, callback) {
     });
 }
 
+exports.updateFromSession = function(request, callback) {
+    accounts.findOne({user: request.session.user.user}, function(e, o){
+        if (e) {
+            // This error should never happen. When gettin ready for production, make sure to
+            // make this degrade properly (notify admin, kill server?)
+            console.log("updateTextBlock --> Error, Could not find user: " + request.session.user.user);
+            callback(e, null);
+        } else {
+            o = request.session.user;
+            accounts.save(o, {safe: true}, callback);
+        }
+    });
+}
+
 exports.updateTextBlock = function(request, callback) {
     var userName = request.session.user.user;
     var blockIndex = request.param('blockIndex');
@@ -126,6 +140,8 @@ exports.updateTextBlock = function(request, callback) {
     request.session.user.site.blocks[blockIndex].content.body = blockContent;
     accounts.findOne({user: request.session.user.user}, function(e, o){
         if (e) {
+            // This error should never happen. When gettin ready for production, make sure to
+            // make this degrade properly (notify admin, kill server?)
             console.log("updateTextBlock --> Error, Could not find user: " + request.session.user.user);
         }
         o = request.session.user;

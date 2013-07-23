@@ -1,4 +1,4 @@
-<!-- Edit -->
+<!-- NO Edit -->
 <% 
     var ejsGlobals = {};
     ejsGlobals.incStyles = ['/vendor/bootstrap.min.css',
@@ -11,11 +11,11 @@
 <% include header %>
     <div id='nav-wrapper' class='container-fluid'>
         <nav id='links' class='navbar navbar-fixed-top navbar-absolute'>
-            <a class='brand' href='#'><%= userData.user %></a>
+            <a class='brand' href='#'><%= username %></a>
             <ul class='nav'>
-                <% for (var i = 0; i < userData.site.blocks.length; i++) { -%>
+                <% for (var i = 0; i < site.blocks.length; i++) { -%>
                     <li>
-                        <a href='#block<%= i %>'><%= userData.site.blocks[i].linkName %></a>
+                        <a href='#block<%= i %>'><%= site.blocks[i].linkName %></a>
                     </li>
                 <% } -%>
             </ul>

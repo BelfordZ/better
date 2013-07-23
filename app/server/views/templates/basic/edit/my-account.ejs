@@ -1,0 +1,68 @@
+<!-- Edit -->
+<% 
+    var ejsGlobals = {};
+    ejsGlobals.incStyles = ['/vendor/bootstrap.min.css',
+                            '/templates/basic/edit/css/basic.css',
+                            '/templates/basic/edit/css/my-account.css',
+                            'http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css',
+                           ];
+-%>
+<% include header %>
+    <div id='nav-wrapper' class='container-fluid'>
+        <nav id='links' class='navbar navbar-fixed-top navbar-absolute'>
+            <a class='brand' href='/'><%= userData.user %></a>
+            <a class="userNav" href='my-apps'>My Apps</a>
+            <a class="userNav" href='apps-store'>Apps Store</a>
+            <a class="userNav" href='my-account'>My Account</a>
+            <a class="userNav" href='logout'>Logout</a>
+        </nav>
+    </div>
+    <div id='ajaxResult'></div>
+   
+    <div id='my-account-wrapper' class='span4'>
+        <form method='post' id='account-form' class='form-horizontal'>
+            <fieldset>
+                <div id='name-cg' class='control-group'>
+                    <label class='control-label' for='name-tf'>Your Name </label>
+                    <div class='controls'>
+                        <input id='name-tf' class='input-xlarge' type='text' name='name' value='<%= userData.name %>'/>
+                    </div>
+                </div>
+                
+                <div id='email-cg' class='control-group'>
+                    <label class='control-label' for='email-tf'>Your Email </label>
+                    <div class='controls'>
+                        <input id='email-tf' class='input-xlarge' type='text' name='email' value='<%= userData.email %>' />
+                    </div>
+                </div>
+                
+                <div id='clist-cg' class='control-group'>
+                    <label class='control-label' for='clist-tf'>Country </label>
+                    <div class='controls'>
+                        <select id='country-list' name='country'>
+                            <% for (var i=0; i < countries.length; i++) { -%>
+                                <option selected='<%= countries[i].name == userData.country %>'>
+                                    <%= countries[i].name %>
+                                </option>
+                            <% } %>
+                        </select>
+                    </div>
+                </div>
+            
+                <div id='pass-cg' class='control-group'>
+                    <label class='control-label' for='pass-tf'>Password </label>
+                    <div class='controls'>
+                        <input id='pass-tf' class='input-xlarge disabled' type='password' name='pass'>
+                    </div>
+                    <button type='button' id='account-form-btn1' class='btn'>Cancel</button>
+                    <button type='submit' id='account-form-btn2' class='btn btn-success'>Update</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <script src='/vendor/jquery.min.js' type='text/javascript'></script>
+    <script src='/vendor/jquery.form.js' type='text/javascript'></script>
+    <script src='/vendor/bootstrap-modal.js' type='text/javascript'></script>
+    <script src='/vendor/bootstrap-transitions.js' type='text/javascript'></script>
+    </body>
+</html>

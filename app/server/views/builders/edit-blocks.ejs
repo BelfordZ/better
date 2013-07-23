@@ -1,13 +1,17 @@
-<% for (var i = 0; i < userData.site.blocks.length; i++) { -%>
-    <% var currBlock = userData.site.blocks[i] -%>
-    <% if (currBlock.type == 'text') { -%>
-        <div class='block-text' id='block<%= i %>'>
-            <% include ../blocks/text/edit/text -%>
-        </div>
+<ul id="sortable">
+    <% for (var i = 0; i < userData.site.blocks.length; i++) { -%>
+        <% var currBlock = userData.site.blocks[i] -%>
+        <% if (currBlock.type == 'text') { -%>
+            <li class='block-text ui-state-default' id='block<%= i %>'>
+                <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+                <% include ../blocks/text/edit/text -%>
+            </li>
+        <% } -%>
+        <% if (currBlock.type == 'gallery') { -%>
+            <li class='block-gallery ui-state-default' id='block<%= i %>'>
+                <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+                <% include ../blocks/gallery/edit/gallery -%>
+            </li>
+        <% } -%>
     <% } -%>
-    <% if (currBlock.type == 'gallery') { -%>
-        <div class='block-gallery' id='block<%= i %>'>
-            <% include ../blocks/gallery/edit/gallery -%>
-        </div>
-    <% } -%>
-<% } -%>
+</ul>
