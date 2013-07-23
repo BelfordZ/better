@@ -1,3 +1,6 @@
+arrows {
+ background-color:lightgray;   
+}
 #sortable {
     list-style-type: none;
     margin: 0;
@@ -62,7 +65,8 @@ body {
     padding: 0;
 }
 
-.block {
+.block-text:active, .block-gallery:active {
+    border: 1px dotted white;
 }
 
 a {

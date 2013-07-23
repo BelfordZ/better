@@ -7,10 +7,8 @@ var initEditor = function() {
 var postTextBlock = function(blockID) {
     var postData = {};
     postData.blockIndex = blockID;
-    tinyMCE.triggerSave();
-    postData.content = $('#' + blockID).attr("value");
+    postData.content = tinyMCE.get(blockID).getContent();
     postData.linkType = 'text';
-    console.log(postData);
     
     $.post("edit", postData)
     .always(function() {
@@ -64,3 +62,15 @@ $(function() {
         }
     });
 });
+
+
+var makeEditable = function(blockID) {
+    var blockContent = $("#block" + blockID + " .inner-block-text").html();
+    var textArea = "<textarea id='" + blockID + "'>" + blockContent + "</textarea>";
+    var editableBlock = textArea + "<a class='btn btn-success' onclick='postTextBlock(" +
+                        blockID + ")'>Save Changes</a>";
+    $('#block' + blockID).html(editableBlock);
+    tinymce.init({
+        mode: "textareas"
+    });
+}

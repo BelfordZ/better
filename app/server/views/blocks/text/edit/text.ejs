@@ -1,5 +1,5 @@
 <!-- Edit -->
-<textarea id='<%= i %>'>
-    <%= currBlock.content.body %>
-</textarea>
-<a class='btn btn-success' onclick='postTextBlock("<%= i %>")'>Save Changes</a>
+<div class='inner-block-text'>
+    <%- currBlock.content.body %>
+</div>
+<button class='editButton' onclick='makeEditable(<%= i %>)'>Edit</button>
