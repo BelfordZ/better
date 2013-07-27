@@ -79,7 +79,6 @@ exports.manualLogin = function(user, pass, callback) {
 
 /* record insertion, update & deletion methods */
 exports.addNewAccount = function(newData, callback) {
-    //console.log(newData);
     accounts.findOne({user:newData.user}, function(e, o) {
         if (o) {
             callback('username-taken');
@@ -154,7 +153,7 @@ exports.updateGalleryBlock = function(request, callback) {
         if (e) {
             console.log("updateGalleryBlock --> Error, Could not find user: " + request.session.user.user);
         }
-        o = request.session.user;
+        o.site = request.session.user.site;
         accounts.save(o, {safe: true}, callback);
     });
 }
@@ -163,7 +162,7 @@ exports.updatePassword = function(email, newPass, callback) {
     accounts.findOne({email:email}, function(e, o) {
         if (e) {
             callback(e, null);
-        }	else {
+        } else {
             saltAndHash(newPass, function(hash) {
                 o.pass = hash;
                 accounts.save(o, {safe: true}, callback);

@@ -1,3 +1,36 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat:700,400);
+
+#userNav-wrapper {
+    position: fixed;
+    top:0;
+    left:0;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0,0,0,0.3);
+}
+
+#sideBarList {
+    height: 100%;
+    position: relative;    
+    width:105px;
+    list-style: none;
+    padding: 0;
+    margin: 70px 10px 0 10px;
+}
+.sideBarItem {
+    height:10%;
+    max-height:83px;
+    min-height: 50px;
+    line-height: 15px;
+    position: relative;
+    margin: 5px 0px 5px 5px
+}
+
+#content-wrapper {
+    margin-left:110px;
+}
+
 arrows {
  background-color:lightgray;   
 }
@@ -31,20 +64,22 @@ body {
     padding: 0;
     height: 100%;
     
-    background: #222222;
-    background: -moz-radial-gradient(center, ellipse cover, #222222 0%, #333333 100%);
+    background: #354859;
+    background: -moz-radial-gradient(center, ellipse cover, #354859 0%, #48647D 100%);
     /* FF3.6+ */
-    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #222222), color-stop(100%, #333333));
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #354859), color-stop(100%, #48647D));
     /* Chrome,Safari4+ */
-    background: -webkit-radial-gradient(center, ellipse cover, #222222 0%, #333333 100%);
+    background: -webkit-radial-gradient(center, ellipse cover, #354859 0%, #48647D 100%);
     /* Chrome10+,Safari5.1+ */
-    background: -o-radial-gradient(center, ellipse cover, #222222 0%, #333333 100%);
+    background: -o-radial-gradient(center, ellipse cover, #354859 0%, #48647D 100%);
     /* Opera 12+ */
-    background: -ms-radial-gradient(center, ellipse cover, #222222 0%, #333333 100%);
+    background: -ms-radial-gradient(center, ellipse cover, #354859 0%, #48647D 100%);
     /* IE10+ */
-    background: radial-gradient(center, ellipse cover, #222222 0%, #333333 100%);
+    background: radial-gradient(center, ellipse cover, #354859 0%, #48647D 100%);
     
+    font-family: 'montserrat', 'sans-serif';
     font-size: 14pt;
+    font-weight: 400;
     color:#aaaaaa;
 }
 
@@ -65,18 +100,12 @@ body {
     padding: 0;
 }
 
-.block-text:active, .block-gallery:active {
-    border: 1px dotted white;
+.brand {
+    
 }
 
 a {
     color:#aaa;
-}
-.userNav {
-    font-size:12pt;
-    position:relative;
-    float:left;
-    margin: 10px 5px 10px 5px;
 }
 
 #my-apps-wrapper {

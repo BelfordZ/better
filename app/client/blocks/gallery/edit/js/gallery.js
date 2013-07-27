@@ -13,3 +13,8 @@ var postGalleryBlock = function(blockID) {
             console.log("res");
     });
 };
+
+var makeImageEditable = function(blockID) {
+    var liteBox = $("#modal-alert");
+    liteBox.modal('show');
+}

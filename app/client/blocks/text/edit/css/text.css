@@ -2,3 +2,15 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.moveButton {
+    cursor: move;
+}
+.ui-state-highlight {
+    position:relative;
+    top:10%
+    background: darkgray;
+    border: 1px silver dotted; 
+    top:10%;
+    height: 2.3em;
+}

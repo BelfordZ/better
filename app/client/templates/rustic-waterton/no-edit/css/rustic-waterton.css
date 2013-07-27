@@ -1,0 +1,123 @@
+header {
+}
+
+#banner {
+    background-image: url('/templates/rustic-waterton/img/bg1.jpg');
+    background-repeat: repeat-x;
+    height: 260px;
+}
+
+#string-horiz {
+    background-color: rgb(115,109,92);
+    height: 1px;
+    width: 100%;
+    position:relative;
+    top:130px;
+    z-index:99;
+}
+
+#title-wrap {
+    margin: 0px auto 0px auto;
+    padding: 20px 0 0 0;
+    background: url('/templates/rustic-waterton/img/title1.png') no-repeat center;
+    background-size: 98%;
+    text-align: center;
+    height: 200px;
+    width: 400px;
+    position: relative;
+    top: -107px;
+}
+
+#title-bg {
+    margin-left
+    position: relative;
+    height: 214px;
+    width: 384px;
+}
+
+#title-text {
+    padding-top: 73px;
+    text-align:center;
+    max-width: 350px;
+    max-height: 190px;
+    margin: 0 auto 0 auto;
+}
+
+#nav-wrapper {
+    background-color: rgb(115,109,92);
+    background-repeat:repeat-x;
+    width:100%;
+}
+
+.pull-center {
+    text-align: center;
+}
+.pull-center > .nav {
+    float:none;
+    display:inline-block;
+    *display: inline; *zoom: 1;
+    height: 32px;
+    
+    font-size: 12pt;
+    color: #ffffff;
+}
+
+#links {
+    text-align:center;
+    margin: 0 auto 0 auto;
+    padding: 0;
+    border-bottom: 1px solid #333;
+}
+
+.box-shadow-bottom:after {
+    content:"";
+    width: 100%;
+    position: absolute;
+    z-index: 9999;
+    -webkit-box-shadow: 0px 4px 15px 3px #000000;
+       -moz-box-shadow: 0px 4px 15px 3px #000000;
+            box-shadow: 0px 4px 15px 3px #000000;
+}
+
+.box-shadow {
+    content:"";
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    -webkit-box-shadow: 0px 0px 20px 1px #000000;
+       -moz-box-shadow: 0px 0px 20px 1px #000000;
+            box-shadow: 0px 0px 20px 1px #000000;
+}
+
+#footer-text {
+    text-align:center;
+    background-color: rgb(115,109,92);
+    padding: 25px 0 35px 0;
+}
+
+#footer-stripe {
+    position:relative;
+    top: -28px;
+    margin: 10px 0 0 0;
+    height: 2px;
+    background-color: white;
+}
+
+.odd {
+    background-color: rgb(115,109,92);
+}
+
+odd:after {
+       
+}
+
+.even {
+    background: url('/templates/rustic-waterton/img/bg1.jpg');
+}
+
+.affix {
+    background-color: rgb(115,109,92);
+    position: fixed;
+    top: 0px;
+    right: 0px;
+}

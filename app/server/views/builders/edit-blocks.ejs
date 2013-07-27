@@ -3,13 +3,23 @@
         <% var currBlock = userData.site.blocks[i] -%>
         <% if (currBlock.type == 'text') { -%>
             <li class='block-text' id='block<%= i %>'>
-                <arrows class="ui-icon ui-icon-arrowthick-2-n-s"></arrows>
+                <button class='btn moveButton'>
+                    <i class='icon-move'></i>
+                </button>
+                <button class='editButton btn btn-primary' onclick='makeTextEditable(<%= i %>)'>
+                    <i class='icon-pencil'></i>
+                </button>
                 <% include ../blocks/text/edit/text -%>
             </li>
         <% } -%>
         <% if (currBlock.type == 'gallery') { -%>
             <li class='block-gallery' id='block<%= i %>'>
-                <arrows class="ui-icon ui-icon-arrowthick-2-n-s"></arrows>
+                <button class="btn moveButton">
+                    <i class='icon-move'></i>    
+                </button>
+                <button class='editButton btn btn-primary' onclick='makeImageEditable(<%= i %>)'>
+                    <i class='icon-pencil'></i>
+                </button>
                 <% include ../blocks/gallery/edit/gallery -%>
             </li>
         <% } -%>

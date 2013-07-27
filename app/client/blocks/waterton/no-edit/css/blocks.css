@@ -1,0 +1,12 @@
+.block1-wrapper {
+    width: 100%;
+    margin: 0px auto 0px auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-size:14pt;
+}
+
+#block1-img-wrapper {
+    height: 30%;
+    width: 30%;
+}

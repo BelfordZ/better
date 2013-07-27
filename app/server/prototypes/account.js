@@ -8,9 +8,4 @@ module.exports.accountObj = {
     siteName: '',
     expires: '',
     apps: [],
-    site: {
-        name: '',
-        template: 'basic',
-        blocks: []
-    }
 };

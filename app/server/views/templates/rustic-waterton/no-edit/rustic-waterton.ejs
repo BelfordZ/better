@@ -1,0 +1,46 @@
+<% 
+    var ejsGlobals = {};
+    ejsGlobals.incStyles = ['/vendor/bootstrap.min.css',
+                            '/templates/rustic-waterton/no-edit/css/rustic-waterton.css', 
+                            'http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css'
+                           ]; 
+-%>
+<% include header %>
+    <header>
+        <div id='banner'>
+            <div id="string-horiz">
+                <div id='title-wrap'>
+                    <h1 id="title-text"><a href='/'><%= site.name %></a></h1>
+                </div>
+            </div>
+        </div>
+        <div id='nav-wrapper' class="box-shadow-bottom" data-spy="affix" data-offset-top="248">
+            <nav id='links' class='navbar pull-center'>
+                <ul class='nav'>
+                    <% for (var i = 0; i < site.blocks.length; i++) { -%>
+                        <li>
+                            <a href='#block<%= i %>'><%= site.blocks[i].linkName %></a>
+                        </li>
+                    <% } %>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id='blocks-wrapper container-fluid'>
+        <% include ../../../builders/blocks %>
+    </section>
+    
+    <footer>
+        <div id='footer-text'>
+            <div id='footer-stripe'></div>
+            |  “Lorem ipsum dolor sit amet, consectetur adipiscing elit.“  | Much Love, <%= site.name %>  |
+        </div>
+    </footer>
+
+<%
+    ejsGlobals.incScripts = ['/vendor/jquery.form.js',
+                             '/vendor/bootstrap.min.js'
+                            ];
+-%>
+<% include footer %>

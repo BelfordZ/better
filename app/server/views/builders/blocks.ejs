@@ -1,13 +1,31 @@
 <% for (var i = 0; i < site.blocks.length; i++) { -%>
+    <% if (i%2) { %>
+        <% var order = 'odd box-shadow-bottom' %>
+    <% } else { %>
+        <% var order = 'even' %>
+    <% } %>
     <% var currBlock = site.blocks[i] -%>
     <% if (currBlock.type == 'text') { -%>
-        <div class='block-text' id='block<%= i %>'>
+        <div class='block-text <%= order %>' id='block<%= i %>'>
             <% include ../blocks/text/no-edit/text -%>
         </div>
     <% } -%>
     <% if (currBlock.type == 'gallery') { -%>
-        <div class='block-gallery' id='block<%= i %>'>
+        <div class='block-gallery <%= order %>' id='block<%= i %>'>
             <% include ../blocks/gallery/no-edit/gallery -%>
         </div>
     <% } -%>
+    
+    <% if (currBlock.type == 'watertonBlock1') { -%>
+        <div class='block1 <%= order %>' id='block<%= i %>'>
+            <% include ../blocks/waterton/no-edit/block1 -%>
+        </div>
+    <% } -%>
+    
+    <% if (currBlock.type == 'watertonBlock2') { -%>
+        <div class='block2 <%= order %>' id='block<%= i %>'>
+            <% include ../blocks/waterton/no-edit/block2 -%>
+        </div>
+    <% } -%>
+        
 <% } -%>

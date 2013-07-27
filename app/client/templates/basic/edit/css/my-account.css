@@ -1,8 +1,40 @@
+.controls {
+    font-size: 12pt;
+    vertical-align: middle;
+}
+
 label {
     color:#aaaaaa;
 }
 
 #my-account-wrapper {
     margin: 0px auto 0px auto;
+    padding-left:110px
     min-width:200px;
+}
+
+.form-horizontal .control-label {
+  width: 80px;
+}
+.form-horizontal .controls {
+  margin-left: 120px;
+}
+.form-horizontal .form-actions {
+  padding: 17px 0 0 270px;
+}
+label {
+  color: #aaaaaa;
+  text-shadow: -1px 1px 0 #000;
+  -moz-text-shadow: -1px 1px 0 #000;
+  -webkit-text-shadow: -1px 1px 0 #000;
+}
+.subheading {
+  color: #808080;
+  text-shadow: -1px 1px 0 #fff;
+  -moz-text-shadow: -1px 1px 0 #fff;
+  -webkit-text-shadow: -1px 1px 0 #fff;
+  margin-top: 3px;
+}
+button i {
+  padding-left: 8px;
 }

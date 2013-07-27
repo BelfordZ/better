@@ -12,10 +12,6 @@
     <div id='nav-wrapper' class='container-fluid'>
         <nav id='links' class='navbar navbar-fixed-top navbar-absolute'>
             <a class='brand' href='#'><%= userData.user %></a>
-            <a class="userNav" href='my-apps'>My Apps</a>
-            <a class="userNav" href='apps-store'>Apps Store</a>
-            <a class="userNav" href='my-account'>My Account</a>
-            <a class="userNav" href='logout'>Logout</a>
             <ul class='nav pull-right'>
                 <% for (var i = 0; i < userData.site.blocks.length; i++) { -%>
                     <li>
@@ -25,14 +21,33 @@
             </ul>
         </nav>
     </div>
-    <div id='ajaxResult'></div>
-    <section id='blocks-wrapper' class='container-fluid'>
-        <% include ../../../builders/edit-blocks %>
-    </section>
+    <div id='userNav-wrapper'>
+        <ul id='sideBarList'>
+            <li class='sideBarItem'>
+                <a class="userNav" href='my-apps'>My Apps</a>
+            </li>
+            <li class='sideBarItem'>
+                <a class="userNav" href='apps-store'>Apps Store</a>
+            </li>
+            <li class='sideBarItem'>
+                <a class="userNav" href='my-account'>My Account</a>
+            </li>
+            <li class='sideBarItem'>
+                <a class="userNav" href='logout'>Logout</a>
+            </li>
+        </ul>
+    </div>
+    <div id='content-wrapper'>
+        <div id='ajaxResult'></div>
+        <section id='blocks-wrapper' class='container-fluid'>
+            <% include ../../../builders/edit-blocks %>
+        </section>
+    </div>
 <%
     ejsGlobals.incScripts = ['/vendor/jquery.form.js',
                              '//tinymce.cachefly.net/4.0/tinymce.min.js',
                              '/blocks/text/edit/js/text.js',
+                             '/blocks/gallery/edit/js/gallery.js',
                              '/vendor/bootstrap-modal.js',
                              '/vendor/bootstrap-transitions.js'
                             ];
