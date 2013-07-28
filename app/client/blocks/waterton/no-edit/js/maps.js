@@ -24,26 +24,4 @@ $(function() {
     var loc0 = $("#address").html();
     
     getGeoCode(loc0, "block2-map-wrapper");
-    
-    /*
-   var mapOptions0 = {
-     zoom: 8,
-     center: loc0,
-     mapTypeId: google.maps.MapTypeId.ROADMAP
-   }
-   var mapOptions1 = {
-     zoom: 8,
-     center: loc1,
-     mapTypeId: google.maps.MapTypeId.ROADMAP
-   }
-   var mapOptions2 = {
-     zoom: 8,
-     center: loc2,
-     mapTypeId: google.maps.MapTypeId.ROADMAP
-   }
-   
-   var map0 = new google.maps.Map(document.getElementById("map_canvas0"), mapOptions0);
-   var map1 = new google.maps.Map(document.getElementById("map_canvas1"), mapOptions1);
-   var map2 = new google.maps.Map(document.getElementById("map_canvas2"), mapOptions2);
-   */
 });

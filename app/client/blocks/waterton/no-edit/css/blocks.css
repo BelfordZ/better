@@ -10,3 +10,13 @@
     height: 30%;
     width: 30%;
 }
+
+#block2-map-wrapper {
+    height: 250px;
+    width: 250px;
+}
+
+#block2-wrapper {
+    padding: 20px 0 20px 0;
+    margin: 20px 0 20px 0;
+}
