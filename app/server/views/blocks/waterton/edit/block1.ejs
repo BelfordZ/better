@@ -4,14 +4,14 @@
         <button class="btn moveButton">
             <i class='icon-move'></i>    
         </button>
-        <button class='editButton btn btn-primary' onclick='makeBlock1Editable(<%= i %>)'>
+        <button class='editButton btn btn-primary' onclick="makeBlock1Editable('.text-wrapper.<%= i %>', '.text-wrapper.<%= i %>')">
             <i class='icon-pencil'></i>
         </button>
     </div>
-    <div class='img-wrapper' class='container-fluid'>
+    <div class='img-wrapper <%= i %>' class='container-fluid'>
         <img width="170px" height="230px" src='<%= currBlock.content.img %>'></img>
     </div>
-    <div class='text-wrapper' class='container-fluid'>
+    <div class='text-wrapper <%= i %>' class='container-fluid'>
         <%- currBlock.content.body %>
     </div>
 </div>

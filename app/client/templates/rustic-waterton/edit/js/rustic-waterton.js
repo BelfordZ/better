@@ -65,11 +65,11 @@ var postTextBlock = function(blockID) {
 };
 
 var makeTextEditable = function(blockID) {
-    var blockContent = $("#block" + blockID + " .inner-block-text").html();
+    var blockContent = $(blockID).html();
     var textArea = "<textarea id='" + blockID + "'>" + blockContent + "</textarea>";
     var editableBlock = textArea + "<a class='btn btn-success' onclick='postTextBlock(" +
                         blockID + ")'>Save Changes</a>";
-    $('#block' + blockID).html(editableBlock);
+    $(blockID).html(editableBlock);
     tinymce.init({
         mode: "textareas"
     });
@@ -106,10 +106,11 @@ var makeImageEditable = function(blockID) {
     liteBox.modal('show');
 }
 
-var makeBlock1Editable = function(blockID) {
+var makeBlock1Editable = function(textBlockID, imageBlockID) {
     // Needs to first make 2 new holders for both image and text
     // then should insert them into the dom(naked), and call
     // makeTextEditable and makeGalleryEditable
-    
-    
+    makeTextEditable(textBlockID);
+    makeImageEditable(imageBlockID);
+
 }
