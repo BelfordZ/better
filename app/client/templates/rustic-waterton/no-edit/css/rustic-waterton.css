@@ -8,12 +8,11 @@ header {
     z-index:1;
 }
 
-#string-horiz {
+.string-horiz {
     background-color: rgb(115,109,92);
     height: 1px;
-    width: 100%;
     position:relative;
-    top:130px;
+    top:50%;
     z-index:2;
 }
 

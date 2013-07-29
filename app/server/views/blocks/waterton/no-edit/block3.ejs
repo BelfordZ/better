@@ -1,0 +1,36 @@
+<div class="block-wrapper container-fluid">
+    <div class='top-text-wrapper container-fluid'>
+            <%- currBlock.body %>
+        </div>
+    </div>
+    <div class="party-imgs-wrapper container-fluid">
+<%      var numImages = currBlock.imgs.length;
+        var numFullRows = Math.floor(numImages / 5);
+        var lastRowNumImages = numImages%5;
+        
+        var image_iter = 0;
+        for (var row = 0; row < numFullRows; row++) { 
+-%>         <div class='img-row container-fluid'>
+                <div class='string-horiz'>
+                    <div class='party-img-ribbon left-ribbon' class='container-fluid' style='background: url("/templates/rustic-waterton/img/Left_String_Knot.png") no-repeat; background-size: 100%;'></div>
+<%                  for (var col = 0; col < 5; col++) {
+-%>                     <div class='party-img' class='container-fluid' style='background: url("<%= currBlock.imgs[(row*5) + col].filename %>") no-repeat; background-size: 100px 100px;'></div>
+<%                      image_iter++;
+                    }
+-%>                 <div class='party-img-ribbon right-ribbon' class='container-fluid' style='background: url("/templates/rustic-waterton/img/Right_String_Knot.png") no-repeat; background-size: 100%;'></div>
+                </div>
+            </div>
+<%      }
+        if (image_iter-1 != numImages) {
+-%>         <div class='img-row container-fluid'>
+                <div class='string-horiz'>
+                    <div class='party-img-ribbon left-ribbon' class='container-fluid' style='background: url("/templates/rustic-waterton/img/Left_String_Knot.png") no-repeat; background-size: 100%;'></div>
+<%                  for (var col = image_iter; col < numImages; col++) {
+-%>                     <div class='party-img' style='background: url("<%= currBlock.imgs[col].filename %>") no-repeat; background-size: 100px 100px;'></div>
+<%                  }
+-%>                 <div class='party-img-ribbon right-ribbon' class='container-fluid' style='background: url("/templates/rustic-waterton/img/Right_String_Knot.png") no-repeat; background-size: 100%;'></div>
+                </div>
+            </div>
+<%      } 
+-%> </div>
+</div>

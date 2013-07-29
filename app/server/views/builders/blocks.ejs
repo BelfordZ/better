@@ -4,6 +4,7 @@
     <% } else { %>
         <% var order = 'even' %>
     <% } %>
+
     <% var currBlock = site.blocks[i] -%>
     <% if (currBlock.type == 'text') { -%>
         <div class='block-text <%= order %>' id='block<%= i %>'>
@@ -25,6 +26,12 @@
     <% if (currBlock.type == 'watertonBlock2') { -%>
         <div class='block2 <%= order %>' id='block<%= i %>'>
             <% include ../blocks/waterton/no-edit/block2 -%>
+        </div>
+    <% } -%>
+        
+    <% if (currBlock.type == 'watertonBlock3') { -%>
+        <div class='block3 <%= order %>' id='block<%= i %>'>
+            <% include ../blocks/waterton/no-edit/block3 -%>
         </div>
     <% } -%>
         
