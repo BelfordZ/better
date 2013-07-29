@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        <script src="/vendor/jquery.min.js"></script>
+        <script src='/vendor/jquery.form.js'></script>
+        <script src='/vendor/bootstrap.min.js'></script>
+        <script src='//tinymce.cachefly.net/4.0/tinymce.min.js'></script>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <script src='/templates/rustic-waterton/edit/js/rustic-waterton.js'></script>
+        
+        <link href="/vendor/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href='/templates/rustic-waterton/edit/css/rustic-waterton.css' rel="stylesheet" type="text/css">
+        <link href='http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css' type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,700,400italic,700italic' type="text/css">  
+    </head>
+    <body>
+        <div id='userNav-wrapper'>
+            <ul id='sideBarList'>
+                <li class='sideBarItem'>
+                    <a class="userNav" href='my-apps'>My Apps</a>
+                </li>
+                <li class='sideBarItem'>
+                    <a class="userNav" href='apps-store'>Store</a>
+                </li>
+                <li class='sideBarItem'>
+                    <a class="userNav" href='my-account'>Settings</a>
+                </li>
+                <li class='sideBarItem'>
+                    <a class="userNav" href='logout'>Logout</a>
+                </li>
+            </ul>
+        </div>
+        <div id='edit-wrapper'>
+            <header>
+                <div id='banner'>
+                    <div class="string-horiz">
+                        <div id='title-wrap'>
+                            <h1 id="title-text"><a href='/'><%= userData.site.name %></a></h1>
+                        </div>
+                    </div>
+                </div>
+                <div id='nav-wrapper' class="box-shadow-bottom" data-spy="affix" data-offset-top="248">
+                    <nav id='links' class='navbar pull-center'>
+                        <ul class='nav'>
+                            <% for (var i = 0; i < userData.site.blocks.length; i++) { -%>
+                                <li>
+                                    <a href='#block<%= i %>'><%= userData.site.blocks[i].linkName %></a>
+                                </li>
+                            <% } %>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+            <div id='ajaxResult'></div>
+            <section id='blocks-wrapper container-fluid'>
+                <% include ../../../builders/edit-blocks %>
+            </section>
+            
+            <footer>
+                <div id='footer-text'>
+                    <div id='footer-stripe'></div>
+                    |  “Lorem ipsum dolor sit amet, consectetur adipiscing elit.“  | Much Love, <%= userData.site.name %>  |
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

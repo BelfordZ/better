@@ -1,0 +1,19 @@
+<script src='/blocks/waterton/no-edit/js/maps.js'></script>
+
+<div class="block-wrapper container-fluid">
+    <div class='buttonBlock'>
+        <button class="btn moveButton">
+            <i class='icon-move'></i>    
+        </button>
+        <button class='editButton btn btn-primary' onclick='makeBlock2Editable(<%= i %>)'>
+            <i class='icon-pencil'></i>
+        </button>
+    </div>
+    <div class='img-wrapper' class='container-fluid'>
+        <div id='map' class='container-fluid'></div>
+    </div>
+    <div class='text-wrapper' class='container-fluid'>
+        <div id='address'><%= currBlock.content.address %></div>
+        <%- currBlock.content.body %>
+    </div>
+</div>

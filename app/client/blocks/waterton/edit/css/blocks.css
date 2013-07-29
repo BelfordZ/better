@@ -1,0 +1,99 @@
+.block-text {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.moveButton {
+    cursor: move;
+}
+
+.ui-state-highlight {
+    position:relative;
+    top:10%
+    background: darkgray;
+    border: 1px silver dotted; 
+    top:10%;
+    height: 2.3em;
+}
+
+.container-fluid {
+    text-align:center;
+    padding-right: 0;
+    padding-left: 0; 
+}
+
+.block-wrapper {
+    margin: 0px auto 0px auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-size:14pt;
+    z-index: 1;
+}
+
+.img-wrapper {
+    display:inline-block;
+}
+
+.text-wrapper {
+    display:inline-block;
+    text-align:left;
+}
+
+#map {
+    height:290px;
+    width:350px;
+    margin: 0 auto 0 auto;
+    z-index:2;
+}
+
+.party-string-horiz {
+    height: 50%;
+}
+
+.party-imgs-wrapper {
+    padding-top: 100px;
+}
+
+.party-img-wrapper {
+    margin: 0 auto 0 auto;
+    width: 518px;
+}
+.party-img {
+    display:inline-block;
+    height:100px;
+    width:100px;
+    
+    margin: 0px auto 0px auto;
+    padding: 20px 0 0 0;
+    text-align: center;
+    position: relative;
+    top: -55px;
+    z-index: 2;
+}
+
+.party-img-ribbon {
+    display: inline-block;
+    height: 50px;
+    width: 45px;
+    margin: 0px auto 0px auto;
+    padding: 0;
+    text-align: center;
+    position: relative;
+    top: -93px;
+}
+
+.right-ribbon {
+    left: -25px;
+    z-index: 1;
+}
+
+.left-ribbon {
+    left: 29px;
+    z-index: 1;
+}
+
+.img-row {
+    min-height:110px;
+    padding:0;
+    margin: 0 auto 0 auto;
+}

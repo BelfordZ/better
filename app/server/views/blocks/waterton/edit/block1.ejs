@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="/blocks/waterton/no-edit/css/blocks.css">
+<div class="block-wrapper container-fluid">
+    <div class='buttonBlock'>
+        <button class="btn moveButton">
+            <i class='icon-move'></i>    
+        </button>
+        <button class='editButton btn btn-primary' onclick='makeBlock1Editable(<%= i %>)'>
+            <i class='icon-pencil'></i>
+        </button>
+    </div>
+    <div class='img-wrapper' class='container-fluid'>
+        <img width="170px" height="230px" src='<%= currBlock.content.img %>'></img>
+    </div>
+    <div class='text-wrapper' class='container-fluid'>
+        <%- currBlock.content.body %>
+    </div>
+</div>
