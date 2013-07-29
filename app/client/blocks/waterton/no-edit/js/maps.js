@@ -23,5 +23,5 @@ $(function() {
     
     var loc0 = $("#address").html();
     
-    getGeoCode(loc0, "block2-map-wrapper");
+    getGeoCode(loc0, "map");
 });

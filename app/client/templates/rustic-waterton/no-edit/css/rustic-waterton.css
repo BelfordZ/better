@@ -5,6 +5,7 @@ header {
     background-image: url('/templates/rustic-waterton/img/bg1.jpg');
     background-repeat: repeat-x;
     height: 260px;
+    z-index:1;
 }
 
 #string-horiz {
@@ -13,7 +14,7 @@ header {
     width: 100%;
     position:relative;
     top:130px;
-    z-index:99;
+    z-index:2;
 }
 
 #title-wrap {
@@ -26,13 +27,7 @@ header {
     width: 400px;
     position: relative;
     top: -107px;
-}
-
-#title-bg {
-    margin-left
-    position: relative;
-    height: 214px;
-    width: 384px;
+    z-index:2;
 }
 
 #title-text {
@@ -41,12 +36,14 @@ header {
     max-width: 350px;
     max-height: 190px;
     margin: 0 auto 0 auto;
+    z-index:3;
 }
 
 #nav-wrapper {
     background-color: rgb(115,109,92);
     background-repeat:repeat-x;
     width:100%;
+    z-index:4;
 }
 
 .pull-center {
@@ -67,6 +64,7 @@ header {
     margin: 0 auto 0 auto;
     padding: 0;
     border-bottom: 1px solid #333;
+    z-index:5;
 }
 
 .box-shadow-bottom:after {
@@ -74,9 +72,10 @@ header {
     width: 100%;
     position: absolute;
     z-index: 9999;
-    -webkit-box-shadow: 0px 4px 15px 3px #000000;
-       -moz-box-shadow: 0px 4px 15px 3px #000000;
-            box-shadow: 0px 4px 15px 3px #000000;
+    -webkit-box-shadow: 4px 2px 12px 3px #000000;
+       -moz-box-shadow: 4px 2px 12px 3px #000000;
+            box-shadow: 4px 2px 12px 3px #000000;
+    z-index:3;
 }
 
 .box-shadow {
@@ -84,9 +83,9 @@ header {
     width: 100%;
     position: absolute;
     z-index: 1;
-    -webkit-box-shadow: 0px 0px 20px 1px #000000;
-       -moz-box-shadow: 0px 0px 20px 1px #000000;
-            box-shadow: 0px 0px 20px 1px #000000;
+    -webkit-box-shadow: 4px 2px 12px 3px #000000;
+       -moz-box-shadow: 4px 2px 12px 3px #000000;
+            box-shadow: 4px 2px 12px 3px #000000;
 }
 
 #footer-text {

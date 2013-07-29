@@ -1,22 +1,30 @@
-.block1-wrapper {
-    width: 100%;
+.block-wrapper {
+    width: 60%;
     margin: 0px auto 0px auto;
     padding-top: 50px;
     padding-bottom: 50px;
     font-size:14pt;
+    z-index: 1;
 }
 
-#block1-img-wrapper {
-    height: 30%;
-    width: 30%;
+.img-wrapper {
+    min-width: 30%;
+    display:inline-block;
 }
 
-#block2-map-wrapper {
-    height: 250px;
-    width: 250px;
+.text-wrapper {
+    min-width: 30%;
+    display:inline-block;
+    text-align:left;
 }
 
-#block2-wrapper {
-    padding: 20px 0 20px 0;
-    margin: 20px 0 20px 0;
+#map {
+    height:290px;
+    width:350px;
+    margin: 0 auto 0 auto;
+    z-index:2;
+}
+
+.container-fluid {
+    text-align:center;
 }
