@@ -109,9 +109,9 @@ var postGalleryBlock = function(blockID) {
 var makeImageEditable = function(blockID) {
     var imgHolder = $('.img-wrapper.' + blockID).html();
     imgHolder += "<form action='upload-image' enctype='multipart/form-data' method='post'>";
-    imgHolder += "<input id='<%= i %>' type='file' name='inputImg'>";
-    imgHolder += "<input type='hidden' name='blockIndex' value='<%= i %>'>";
-    imgHolder += "<input type='hidden' name='blockType' value='<%= i %>'>";
+    imgHolder += "<input id='"+blockID+"' type='file' name='inputImg'>";
+    imgHolder += "<input type='hidden' name='blockIndex' value='" + blockID + "'>";
+    imgHolder += "<input type='hidden' name='blockType' value='" + blockID + "'>";
     imgHolder += "<input type='submit' class='btn btn-success' value='Save Changes'>";
     imgHolder += "</form>";
     /*
