@@ -45,6 +45,7 @@ img {
     padding: 0;
     margin: 70px 10px 0 10px;
 }
+
 .sideBarItem {
     height:10%;
     max-height:83px;
@@ -55,11 +56,18 @@ img {
 }
 
 .edit-wrapper {
-       
+}
+
+.navbar .nav>li>a {
+    font-family: 'Gentium Book Basic', serif;
+    color: #666;
+    text-shadow: 0 1px 0 #111111;
 }
 
 body {
-    font-family: 'Gentium Book Basic', serif;   
+    font-family: 'Gentium Book Basic', serif;
+    color: #333;
+    
 }
 header {
 }

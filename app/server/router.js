@@ -62,14 +62,19 @@ module.exports = function(app) {
                 // On post to register, validate/verify input data and create a new account, redirect to /edit
                 require('./modules/system/register').postRegister(req, res);
                 break;
-            
+                
             case '/edit':
                 // On post to register, could have -> changed blocks, added/removed blocks, etc etc
                 require('./modules/user/edit').postEdit(req, res);
                 break;
             
+            case '/upload-image':
+                // On post to register, could have -> changed blocks, added/removed blocks, etc etc
+                require('./modules/system/uploadImage').postUploadImage(req, res);
+                break;
+                
             default:
-                req.send('fail post', 400);
+                res.send('fail post', 400);
         }
     });
     // Access restriction functions. If logged in, will run the 'next' function passed in

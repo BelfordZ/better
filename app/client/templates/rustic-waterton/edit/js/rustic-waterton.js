@@ -5,7 +5,6 @@ $(function() {
         forcePlaceholderSize: true,
         placeholder: "ui-state-highlight",
         handle: ".moveButton",
-        cancel: '',
         axis: "y",
         start: function(event, ui) {
             ui.placeholder.html("<div></div>");
@@ -93,22 +92,32 @@ var undoMakeTextEditable = function(blockContent, blockID) {
 var postGalleryBlock = function(blockID) {
     var postData = {};
     postData.linkIndex = blockID;
-    postData.content = $('#' + blockID).attr("files");
-    postData.linkType = 'gallery';
+    postData.content = $('#imgBlock' + blockID).attr("files");
+    postData.linkType = 'block1-img';
+    
     console.log(postData);
     
-    $.post("edit", postData)
+    $.post("upload-image", postData)
         .always(function() {
             console.log("request sent");
         })
         .done(function(res) {
-            console.log("res");
+            console.log(res);
     });
 };
 
 var makeImageEditable = function(blockID) {
     var imgHolder = $('.img-wrapper.' + blockID).html();
-    imgHolder += '<form action="edit" method="post" enctype="multipart/form-data"><input type="file" name="inputImg" id="file"><br><button class="changeImg btn btn-success" onclick="postGalleryBlock(' + blockID + ')">Change Image</button></form>';
+    imgHolder += "<form action='upload-image' enctype='multipart/form-data' method='post'>";
+    imgHolder += "<input id='<%= i %>' type='file' name='inputImg'>";
+    imgHolder += "<input type='hidden' name='blockIndex' value='<%= i %>'>";
+    imgHolder += "<input type='hidden' name='blockType' value='<%= i %>'>";
+    imgHolder += "<input type='submit' class='btn btn-success' value='Save Changes'>";
+    imgHolder += "</form>";
+    /*
+    var imgHolder = $('.img-wrapper.' + blockID).html();
+    imgHolder += '<form id="imgBlock'+blockID+'" enctype="multipart/form-data"><input type="file" name="inputImg" id="files"></form><button class="changeImg btn btn-success" onclick="postGalleryBlock(' + blockID + ')">Change Image</button>';
+    */
     $('.img-wrapper.' + blockID).html(imgHolder);
 }
 
