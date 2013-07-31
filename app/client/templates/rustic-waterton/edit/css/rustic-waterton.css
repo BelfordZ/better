@@ -1,3 +1,14 @@
+// TEMPLATES :: RUSTIC-WATERTON :: EDIT :: RUSTIC-WATERTON.CSS
+
+.changeImg {
+    display: inline-block;
+    position:relative;
+}
+
+img {
+    vertical-align:baseline;
+}
+
 #sortable {
     list-style-type: none;
     margin: 0;

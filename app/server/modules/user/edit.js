@@ -24,6 +24,7 @@ module.exports.postEdit = function(req, res) {
     } else if (req.files) {
         // Get the uploaded byte data from /tmp/ folder on server
         //      (unix server only, make sure file permissions are set to be able to read /tmp/)
+        console.log(req.param("linkIndex"));
         fs.readFile(req.files.inputImg.path, function (err, data) {
             // Check error in uploading to server root!
             if (err) {
@@ -38,7 +39,7 @@ module.exports.postEdit = function(req, res) {
                     var newBlockObj = { 
                         "filename": 'userContent/' + req.session.user.user + '/img/' + req.files.inputImg.name 
                     };
-                    req.session.user.site.blocks[req.param("blockIndex")].imgs.push(newBlockObj);
+                    req.session.user.site.blocks[req.param("linkIndex")].content.img = newBlockObj;
                     AM.updateGalleryBlock(req, function(e, o) {
                         if(e) {
                             console.log("big bad error");

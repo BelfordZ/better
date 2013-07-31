@@ -29,21 +29,19 @@
             </li>
 <%      } 
         if (currBlock.type == 'watertonBlock1') { 
--%>         <div class='<%= order %>'>
-            <li class='block1' id='block<%= i %>'>
+-%>         <div class='block <%= order %>' id='block<%= i %>'>
 <%              include ../blocks/waterton/edit/block1 -%>
-            </li>
             </div>
 <%      } 
         if (currBlock.type == 'watertonBlock2') { 
--%>         <li class='block2 <%= order %>' id='block<%= i %>'>
+-%>         <div class='block <%= order %>' id='block<%= i %>'>
 <%              include ../blocks/waterton/edit/block2 -%>
-            </li>
+            </div>
 <%      }
         if (currBlock.type == 'watertonBlock3') {
--%>         <li class='block3  <%= order %>' id='block<%= i %>'>
+-%>         <div class='block  <%= order %>' id='block<%= i %>'>
 <%              include ../blocks/waterton/edit/block3 -%>
-            </li>
+            </div>
 <%      }
     } 
 -%>

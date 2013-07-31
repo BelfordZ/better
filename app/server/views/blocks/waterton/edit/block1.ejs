@@ -1,10 +1,10 @@
 <link rel="stylesheet" href="/blocks/waterton/no-edit/css/blocks.css">
-<div class="block-wrapper container-fluid">
+<li class="block-wrapper container-fluid">
     <div class='buttonBlock'>
         <button class="btn moveButton">
             <i class='icon-move'></i>    
         </button>
-        <button class='editButton btn btn-primary' onclick="makeBlock1Editable('.text-wrapper.<%= i %>', '.text-wrapper.<%= i %>')">
+        <button class='editButton btn btn-primary' onclick="makeBlock1Editable('<%= i %>')">
             <i class='icon-pencil'></i>
         </button>
     </div>
@@ -14,4 +14,4 @@
     <div class='text-wrapper <%= i %>' class='container-fluid'>
         <%- currBlock.content.body %>
     </div>
-</div>
+</li>

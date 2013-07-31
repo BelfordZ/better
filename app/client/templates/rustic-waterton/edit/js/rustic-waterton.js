@@ -1,10 +1,14 @@
+// TEMPLATES :: RUSTIC-WATERTON :: EDIT :: RUSTIC-WATERTON.JS
+
 $(function() {
     $( "#sortable" ).sortable({
         forcePlaceholderSize: true,
         placeholder: "ui-state-highlight",
         handle: ".moveButton",
         cancel: '',
+        axis: "y",
         start: function(event, ui) {
+            ui.placeholder.html("<div></div>");
             elementStartPos = ui.item.index();
             console.log(elementStartPos);
         },  
@@ -25,6 +29,7 @@ $(function() {
             })
             .done(function(res) {
                 if (res == 'ok') {
+                    window.location.reload();
                     $('#ajaxResult').html('<div class="well postResults">Update Successful!</div>');
                     setTimeout(function() {
                         $('#ajaxResult').fadeOut(1200, function() {
@@ -65,11 +70,11 @@ var postTextBlock = function(blockID) {
 };
 
 var makeTextEditable = function(blockID) {
-    var blockContent = $(blockID).html();
+    var blockContent = $(".text-wrapper." + blockID).html();
     var textArea = "<textarea id='" + blockID + "'>" + blockContent + "</textarea>";
     var editableBlock = textArea + "<a class='btn btn-success' onclick='postTextBlock(" +
                         blockID + ")'>Save Changes</a>";
-    $(blockID).html(editableBlock);
+    $('.text-wrapper.' + blockID).html(editableBlock);
     tinymce.init({
         mode: "textareas"
     });
@@ -102,15 +107,16 @@ var postGalleryBlock = function(blockID) {
 };
 
 var makeImageEditable = function(blockID) {
-    var liteBox = $("#modal-alert");
-    liteBox.modal('show');
+    var imgHolder = $('.img-wrapper.' + blockID).html();
+    imgHolder += '<form action="edit" method="post" enctype="multipart/form-data"><input type="file" name="inputImg" id="file"><br><button class="changeImg btn btn-success" onclick="postGalleryBlock(' + blockID + ')">Change Image</button></form>';
+    $('.img-wrapper.' + blockID).html(imgHolder);
 }
 
-var makeBlock1Editable = function(textBlockID, imageBlockID) {
+var makeBlock1Editable = function(blockID) {
     // Needs to first make 2 new holders for both image and text
     // then should insert them into the dom(naked), and call
     // makeTextEditable and makeGalleryEditable
-    makeTextEditable(textBlockID);
-    makeImageEditable(imageBlockID);
+    makeTextEditable(blockID);
+    makeImageEditable(blockID);
 
 }
