@@ -130,9 +130,10 @@ var makeBlock2Editable = function(blockID) {
     
     //venueName.html(newTextBox1);
     //venueAddress.html(newTextBox2);
+    //venueBody.html(newTextBox3);
+    
     venueName.addClass("editable");
     venueAddress.addClass("editable");
-    //venueBody.html(newTextBox3);
     venueBody.addClass("editable");
     
     var saveButton = "<a class='btn btn-success' onclick='postMapTextBlock("+blockID+")'>Save Text</a>";
