@@ -87,6 +87,10 @@ header {
     z-index:2;
 }
 
+.editable {
+    border: 1px dotted red;
+}
+
 #title-wrap {
     margin: 0px auto 0px auto;
     padding: 20px 0 0 0;

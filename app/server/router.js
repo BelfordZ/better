@@ -73,6 +73,11 @@ module.exports = function(app) {
                 require('./modules/system/uploadImage').postUploadImage(req, res);
                 break;
                 
+            case '/upload-text':
+                // On post to register, could have -> changed blocks, added/removed blocks, etc etc
+                require('./modules/system/uploadText').postUploadText(req, res);
+                break;    
+                
             default:
                 res.send('fail post', 400);
         }

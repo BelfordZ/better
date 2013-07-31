@@ -39,8 +39,12 @@
 .text-wrapper {
     display:inline-block;
     text-align:left;
+    width: 60%;
 }
 
+.map-text {
+    width:30%;
+}
 #map {
     height:290px;
     width:350px;

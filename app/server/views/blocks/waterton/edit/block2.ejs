@@ -9,11 +9,15 @@
             <i class='icon-pencil'></i>
         </button>
     </div>
-    <div class='img-wrapper' class='container-fluid'>
+    <div class='img-wrapper <%= i %>' class='container-fluid'>
         <div id='map' class='container-fluid'></div>
     </div>
-    <div class='text-wrapper' class='container-fluid'>
-        <div id='address'><%= currBlock.content.address %></div>
-        <%- currBlock.content.body %>
+    <div class='text-wrapper map-text <%= i %>' class='container-fluid'>
+        <h2>The Venue</h2>
+        <div id='venue-name'><%= currBlock.content.venueName %></div>
+        <div id='venue-address'><%= currBlock.content.address %></div>
+        <div id="venue-body">
+            <%- currBlock.content.body %>
+        </div>
     </div>
 </li>

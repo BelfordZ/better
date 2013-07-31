@@ -10,49 +10,8 @@ module.exports.getEdit = function(req, res) {
     });
 }
 module.exports.postEdit = function(req, res) {
-    // if the update was to a text block
-    if (req.param("content")) {
-        req.session.user.site.blocks[req.param("blockIndex")].content.body = req.param('content');
-        AM.updateTextBlock(req, function(e, o) {
-            if(e) {
-                res.send('error-updating-account', 400);
-            } else {
-                res.send('ok', 200);
-            }
-        });
-    // if the update was adding images
-    } else if (req.files) {
-        // Get the uploaded byte data from /tmp/ folder on server
-        //      (unix server only, make sure file permissions are set to be able to read /tmp/)
-        console.log(req.param("linkIndex"));
-        fs.readFile(req.files.inputImg.path, function (err, data) {
-            // Check error in uploading to server root!
-            if (err) {
-                res.send(err + " ===> postEdit: file upload: error while reading input image", 400);
-            } else {
-                var userContentPath = 'app/client/userContent/' + req.session.user.user + '/img'
-                var newPath = userContentPath + '/' + req.files.inputImg.name;
-                fs.writeFile(newPath, data, function (err) { 
-                    if (err) {
-                        throw err;
-                    }
-                    var newBlockObj = { 
-                        "filename": 'userContent/' + req.session.user.user + '/img/' + req.files.inputImg.name 
-                    };
-                    req.session.user.site.blocks[req.param("linkIndex")].content.img = newBlockObj;
-                    AM.updateGalleryBlock(req, function(e, o) {
-                        if(e) {
-                            console.log("big bad error");
-                            res.send('error-updating-account', 400);
-                        } else {
-                            res.redirect('/');
-                        }
-                    });
-                });
-            }
-        });
     // if the update was re-ordering the blocks
-    } else if (req.param('startIndex') && req.param('finishIndex')) {        
+    if (req.param('startIndex') && req.param('finishIndex')) {        
         if (req.param('startIndex') == req.param('finishIndex')) {
             res.send('ok', 200);
         } else {

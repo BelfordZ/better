@@ -4,7 +4,7 @@ function getGeoCode(address, canvId) {
     geocoder.geocode( { 'address': address}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             var mapOptions = {
-                zoom: 13,
+                zoom: 15,
                 center: results[0].geometry.location,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             }
@@ -21,7 +21,7 @@ function getGeoCode(address, canvId) {
 $(function() {
     geocoder = new google.maps.Geocoder();
     
-    var loc0 = $("#address").html();
+    var address = $("#venue-address").html();
     
-    getGeoCode(loc0, "map");
+    getGeoCode(address, "map");
 });

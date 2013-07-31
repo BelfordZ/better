@@ -5,6 +5,7 @@ $(function() {
         forcePlaceholderSize: true,
         placeholder: "ui-state-highlight",
         handle: ".moveButton",
+        cancel: "",
         axis: "y",
         start: function(event, ui) {
             ui.placeholder.html("<div></div>");
@@ -46,63 +47,51 @@ $(function() {
 var postTextBlock = function(blockID) {
     var postData = {};
     postData.blockIndex = blockID;
-    postData.content = tinyMCE.get(blockID).getContent();
-    postData.linkType = 'text';
+    postData.content = {};
+    postData.date = tinyMCE.get(0).getContent();
+    postData.body = tinyMCE.get(1).getContent();
+    postData.blockType = 'block1';
     
-    $.post("edit", postData)
-    .always(function() {
-        console.log("request sent");
-    })
-    .done(function(res) {
-        if (res == 'ok') {
-            $('#ajaxResult').html('<div class="well postResults">Update Successful!</div>');
-            setTimeout(function() {
-                $('#ajaxResult').fadeOut(1200, function() {
-                    $('#ajaxResult').html('');
-                    $('#ajaxResult').show();
-                });
-            }, 1000);
-
-        }
-        undoMakeTextEditable(postData.content, blockID);
-    });
-};
-
-var makeTextEditable = function(blockID) {
-    var blockContent = $(".text-wrapper." + blockID).html();
-    var textArea = "<textarea id='" + blockID + "'>" + blockContent + "</textarea>";
-    var editableBlock = textArea + "<a class='btn btn-success' onclick='postTextBlock(" +
-                        blockID + ")'>Save Changes</a>";
-    $('.text-wrapper.' + blockID).html(editableBlock);
-    tinymce.init({
-        mode: "textareas"
-    });
-};
-
-var undoMakeTextEditable = function(blockContent, blockID) {
-    var moveButton = "<button class='btn moveButton'><i class='icon-move'></i></button>";
-    var editButton = "<button class='editButton btn btn-primary' onclick='makeTextEditable(" + blockID + ")'>";
-    editButton += "<i class='icon-pencil'></i></button>"
-    var buttons = moveButton + editButton;
-    var editableBlock = buttons + "<div class='inner-block-text'>" + blockContent + "</div>";
-
-    $('#block' + blockID).html(editableBlock);
-};
-
-var postGalleryBlock = function(blockID) {
-    var postData = {};
-    postData.linkIndex = blockID;
-    postData.content = $('#imgBlock' + blockID).attr("files");
-    postData.linkType = 'block1-img';
-    
-    console.log(postData);
-    
-    $.post("upload-image", postData)
+    $.post("upload-text", postData)
         .always(function() {
             console.log("request sent");
         })
         .done(function(res) {
-            console.log(res);
+            if (res == 'ok') {
+                $('#ajaxResult').html('<div class="well postResults">Update Successful!</div>');
+                setTimeout(function() {
+                    $('#ajaxResult').fadeOut(1200, function() {
+                        $('#ajaxResult').html('');
+                        $('#ajaxResult').show();
+                    });
+                }, 1000);
+            }
+            window.location.reload();
+        });
+};
+
+var makeTextEditable = function(blockID) {
+    var weddingDate = $(".wedding-date-wrapper." + blockID);
+    var ourStory = $(".our-story-wrapper." + blockID);
+    
+    weddingDate.addClass("editable");
+    //var weddingDateTextBox = "<textarea class='simple'>" + weddingDate.html() + "</textarea>";
+    //weddingDate.html(weddingDateTextBox);
+        
+    var ourStoryTextBox = "<textarea class='full'>" + ourStory.html() + "</textarea>";
+    ourStory.html(ourStoryTextBox);
+    
+    var saveButton = "<a class='btn btn-success' onclick='postTextBlock(" +
+                        blockID + ")'>Save Text</a>";
+    $('.text-wrapper.' + blockID).append(saveButton);
+    tinymce.init({
+        selector : ".editable",
+        inline: true,
+        menubar: false
+    });
+    tinymce.init({
+        mode : "specific_textareas",
+        editor_selector : "full"
     });
 };
 
@@ -112,20 +101,77 @@ var makeImageEditable = function(blockID) {
     imgHolder += "<input id='"+blockID+"' type='file' name='inputImg'>";
     imgHolder += "<input type='hidden' name='blockIndex' value='" + blockID + "'>";
     imgHolder += "<input type='hidden' name='blockType' value='" + blockID + "'>";
-    imgHolder += "<input type='submit' class='btn btn-success' value='Save Changes'>";
+    imgHolder += "<input type='submit' class='btn btn-success' value='Save Image'>";
     imgHolder += "</form>";
-    /*
-    var imgHolder = $('.img-wrapper.' + blockID).html();
-    imgHolder += '<form id="imgBlock'+blockID+'" enctype="multipart/form-data"><input type="file" name="inputImg" id="files"></form><button class="changeImg btn btn-success" onclick="postGalleryBlock(' + blockID + ')">Change Image</button>';
-    */
     $('.img-wrapper.' + blockID).html(imgHolder);
 }
 
 var makeBlock1Editable = function(blockID) {
     // Needs to first make 2 new holders for both image and text
     // then should insert them into the dom(naked), and call
-    // makeTextEditable and makeGalleryEditable
+    // makeTextEditable and makeImageEditable
     makeTextEditable(blockID);
     makeImageEditable(blockID);
+}
 
+
+
+var makeBlock2Editable = function(blockID) {
+    // Needs to first make 2 new holders for both image and text
+    // then should insert them into the dom(naked), and call
+    // makeTextEditable and makeImageEditable
+    var venueName = $('.map-text.' + blockID).find('#venue-name');
+    var venueAddress = $('.map-text.' + blockID).find('#venue-address');
+    var venueBody = $('.map-text.' + blockID).find('#venue-body');
+
+    //var newTextBox1 = "<textarea class='editable'>" + venueName.html() + "</textarea>";
+    //var newTextBox2 = "<textarea class='editable'>" + venueAddress.html() + "</textarea>";
+    //var newTextBox3 = "<textarea class='full'>" + venueBody.html() + "</textarea>";
+    
+    //venueName.html(newTextBox1);
+    //venueAddress.html(newTextBox2);
+    venueName.addClass("editable");
+    venueAddress.addClass("editable");
+    //venueBody.html(newTextBox3);
+    venueBody.addClass("editable");
+    
+    var saveButton = "<a class='btn btn-success' onclick='postMapTextBlock("+blockID+")'>Save Text</a>";
+    $('.text-wrapper.' + blockID).append(saveButton);
+    tinymce.init({
+        selector : ".editable",
+        inline: true,
+        menubar: false
+    });
+    /*
+    tinymce.init({
+        mode : "specific_textareas",
+        editor_selector : "full"
+    });
+    */
+}
+
+var postMapTextBlock = function(blockID) {
+    var postData = {};
+    postData.blockIndex = blockID;
+    postData.content = {};
+    postData.date = tinyMCE.get(0).getContent();
+    postData.body = tinyMCE.get(1).getContent();
+    postData.blockType = 'block1';
+    
+    $.post("upload-text", postData)
+        .always(function() {
+            console.log("request sent");
+        })
+        .done(function(res) {
+            if (res == 'ok') {
+                $('#ajaxResult').html('<div class="well postResults">Update Successful!</div>');
+                setTimeout(function() {
+                    $('#ajaxResult').fadeOut(1200, function() {
+                        $('#ajaxResult').html('');
+                        $('#ajaxResult').show();
+                    });
+                }, 1000);
+            }
+            window.location.reload();
+        });
 }

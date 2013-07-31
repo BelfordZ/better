@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="/blocks/waterton/no-edit/css/blocks.css">
 <li class="block-wrapper container-fluid">
     <div class='buttonBlock'>
         <button class="btn moveButton">
@@ -12,6 +11,12 @@
         <img width="170px" height="230px" src='<%= currBlock.content.img %>'></img>
     </div>
     <div class='text-wrapper <%= i %>' class='container-fluid'>
-        <%- currBlock.content.body %>
+        <p>CELEBRATE OUR LOVE WITH US ON...</p>
+        <div class='wedding-date-wrapper <%= i %>'>
+            <%- currBlock.content.date %>
+        </div>
+        <div class='our-story-wrapper <%= i %>'>
+            <%- currBlock.content.body %>
+        </div>
     </div>
 </li>
