@@ -14,10 +14,9 @@
     </div>
     <div class='text-wrapper map-text <%= i %>' class='container-fluid'>
         <h2>The Venue</h2>
-        <div id='venue-name'><%= currBlock.content.venueName %></div>
-        <div id='venue-address'><%= currBlock.content.address %></div>
-        <div id="venue-body">
-            <%- currBlock.content.body %>
-        </div>
+        <div id='venue-name'><%- currBlock.content.venueName %></div>
+        <div id='venue-address'><%- currBlock.content.address %></div>
+        <div id='venue-events'><%- currBlock.content.events %></div>        
+        <div id="venue-body"><%- currBlock.content.body %></div>
     </div>
 </li>

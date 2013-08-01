@@ -81,6 +81,8 @@ var makeTextEditable = function(blockID) {
     var ourStoryTextBox = "<textarea class='full'>" + ourStory.html() + "</textarea>";
     ourStory.html(ourStoryTextBox);
     
+    //ourStory.removeClass();
+    
     var saveButton = "<a class='btn btn-success' onclick='postTextBlock(" +
                         blockID + ")'>Save Text</a>";
     $('.text-wrapper.' + blockID).append(saveButton);
@@ -122,6 +124,7 @@ var makeBlock2Editable = function(blockID) {
     // makeTextEditable and makeImageEditable
     var venueName = $('.map-text.' + blockID).find('#venue-name');
     var venueAddress = $('.map-text.' + blockID).find('#venue-address');
+    var venueEvents = $('.map-text.' + blockID).find('#venue-events');
     var venueBody = $('.map-text.' + blockID).find('#venue-body');
 
     //var newTextBox1 = "<textarea class='editable'>" + venueName.html() + "</textarea>";
@@ -134,6 +137,7 @@ var makeBlock2Editable = function(blockID) {
     
     venueName.addClass("editable");
     venueAddress.addClass("editable");
+    venueEvents.addClass("editable");
     venueBody.addClass("editable");
     
     var saveButton = "<a class='btn btn-success' onclick='postMapTextBlock("+blockID+")'>Save Text</a>";
@@ -152,12 +156,15 @@ var makeBlock2Editable = function(blockID) {
 }
 
 var postMapTextBlock = function(blockID) {
+    console.log("called");
     var postData = {};
     postData.blockIndex = blockID;
     postData.content = {};
-    postData.date = tinyMCE.get(0).getContent();
-    postData.body = tinyMCE.get(1).getContent();
-    postData.blockType = 'block1';
+    postData.venueName = tinyMCE.get(0).getContent();
+    postData.address = tinyMCE.get(1).getContent();
+    postData.events = tinyMCE.get(2).getContent();
+    postData.body = tinyMCE.get(3).getContent();
+    postData.blockType = 'block2';
     
     $.post("upload-text", postData)
         .always(function() {

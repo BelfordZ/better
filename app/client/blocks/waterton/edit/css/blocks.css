@@ -41,7 +41,11 @@
     text-align:left;
     width: 60%;
 }
-
+.our-story-wrapper {
+    -moz-column-count:2; 
+    -webkit-column-count:2; 
+    column-count:2;
+}
 .map-text {
     width:30%;
 }
